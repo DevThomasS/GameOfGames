@@ -64,7 +64,8 @@ export default {
 };
 </script>
 
-<style>
+<!-- Intentionally not scoped style. This is to keep the main content of page and header in desired format. -->
+<style lang="scss">
 .sticky-header {
   position: fixed;
   display: flex;

@@ -1,6 +1,6 @@
 <template>
-  <div class="main-page">
-    <div class="content">
+  <div class="default-page">
+    <div class="dune-box">
       <v-row>
         <Atreides @toggle-expanded="toggleExpanded( 0 )" :is-expanded="expandedIndex === 0" />
         <BeneGesserit @toggle-expanded="toggleExpanded( 1 )" :is-expanded="expandedIndex === 1" />
@@ -44,23 +44,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.main-page {
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 50px; /* Adjust padding as needed */
-  padding-bottom: 50px; /* Adjust padding as needed */
-}
-
-.content {
-  background-color: #2020206c; /* Grey background */
-  border: 2px solid #af9130; /* Faded gold border */
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Inner padding */
-  min-height: calc(100vh + 100px); /* Adjust to fill the remaining height */
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-  margin-bottom: 20px; /* Adjust margin as needed */
-}
+<style lang="scss" scoped>
+@import "@/styles/common/default-page.scss";
+@import "@/styles/dune/dune-box.scss";
 </style>

@@ -12,7 +12,7 @@
 import Header from '@/components/common/Header.vue';
 </script>
 
-<style>
+<style lang="scss">
 #app {
   display: flex;
   flex-direction: column;
