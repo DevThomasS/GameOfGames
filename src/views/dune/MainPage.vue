@@ -1,0 +1,66 @@
+<template>
+  <div class="main-page">
+    <div class="content">
+      <v-row>
+        <Atreides @toggle-expanded="toggleExpanded( 0 )" :is-expanded="expandedIndex === 0" />
+        <BeneGesserit @toggle-expanded="toggleExpanded( 1 )" :is-expanded="expandedIndex === 1" />
+        <Emperor @toggle-expanded="toggleExpanded( 2 )" :is-expanded="expandedIndex === 2" />
+        <Fremen @toggle-expanded="toggleExpanded( 3 )" :is-expanded="expandedIndex === 3" />
+        <Harkonnen @toggle-expanded="toggleExpanded( 4 )" :is-expanded="expandedIndex === 4" />
+        <SpacingGuild @toggle-expanded="toggleExpanded( 5 )" :is-expanded="expandedIndex === 5" />
+        <Ixians @toggle-expanded="toggleExpanded( 6 )" :is-expanded="expandedIndex === 6" />
+        <Tleilaxu @toggle-expanded="toggleExpanded( 7 )" :is-expanded="expandedIndex === 7" />
+        <CHOAM @toggle-expanded="toggleExpanded( 8 )" :is-expanded="expandedIndex === 8" />
+        <Richese @toggle-expanded="toggleExpanded( 9 )" :is-expanded="expandedIndex === 9" />
+        <Ecaz @toggle-expanded="toggleExpanded( 10 )" :is-expanded="expandedIndex === 10" />
+        <Moritani @toggle-expanded="toggleExpanded( 11 )" :is-expanded="expandedIndex === 11" />
+      </v-row>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import {
+  Atreides, BeneGesserit, Emperor, Fremen, Harkonnen, SpacingGuild,
+  Ixians, Tleilaxu, CHOAM, Richese, Ecaz, Moritani,
+} from '@/components/dune/factions/factions';
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  components: {
+    Atreides, BeneGesserit, Emperor, Fremen, Harkonnen, SpacingGuild,
+    Ixians, Tleilaxu, CHOAM, Richese, Ecaz, Moritani,
+  },
+  data() {
+    return {
+      expandedIndex: -1,
+    };
+  },
+  methods: {
+    toggleExpanded( index: number ) {
+      this.expandedIndex = this.expandedIndex === index ? -1 : index;
+    },
+  },
+});
+</script>
+
+<style scoped>
+.main-page {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 50px; /* Adjust padding as needed */
+  padding-bottom: 50px; /* Adjust padding as needed */
+}
+
+.content {
+  background-color: #2020206c; /* Grey background */
+  border: 2px solid #af9130; /* Faded gold border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Inner padding */
+  min-height: calc(100vh + 100px); /* Adjust to fill the remaining height */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+</style>
