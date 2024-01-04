@@ -1,0 +1,64 @@
+.dune-box {
+  background-color: #2020206c; /* Grey background */
+  border: 2px solid #af9130; /* Faded gold border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Inner padding */
+  min-height: calc(100vh + 100px); /* Adjust to fill the remaining height */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+@font-face {
+  font-family: 'Dune_Rise';
+  src: url('@/assets/dune/Dune_Rise.ttf') format('truetype');
+}
+
+.h1-text {
+  font-size: 38px;
+  font-family: 'Dune_Rise';
+  color: rgba(255, 255, 255);
+  text-shadow: 0 0 3px rgb(0, 0, 0),
+  0 0 3px rgba(0, 0, 0),
+  0 0 3px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0);
+  text-align: center;
+}
+
+$main-font: 'Roboto';
+
+.p-text {
+  font-size: 18px;
+  font-family: $main-font;
+  color: rgba(255, 255, 255);
+  text-shadow: 0 0 2px rgb(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0);
+}

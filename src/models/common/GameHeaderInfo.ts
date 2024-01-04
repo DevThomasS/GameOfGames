@@ -5,6 +5,8 @@ export default class GameHeaderInfo {
   image_a: string;
   route_b: string;
   image_b: string;
+  route_c: string;
+  image_c: string;
   route_d: string;
   image_d: string;
 
@@ -15,6 +17,8 @@ export default class GameHeaderInfo {
     imgA: string = '',
     routeB: string = '',
     imgB: string = '',
+    routeC: string = '',
+    imgC: string = '',
     routeD: string = '',
     imgD: string = '',
   ) {
@@ -24,6 +28,8 @@ export default class GameHeaderInfo {
     this.image_a = imgA;
     this.route_b = routeB;
     this.image_b = imgB;
+    this.route_c = routeC;
+    this.image_c = imgC;
     this.route_d = routeD;
     this.image_d = imgD;
   }
@@ -32,8 +38,9 @@ export default class GameHeaderInfo {
     return [
       new GameHeaderInfo(
       'dune', new URL(`@/assets/dune/main-logo.png`, import.meta.url).href,
-      'dune-rules', new URL(`@/assets/dune/rules.png`, import.meta.url).href,
       'dune-components', new URL(`@/assets/dune/components.png`, import.meta.url).href,
+      'dune-rules', new URL(`@/assets/dune/rules.png`, import.meta.url).href,
+      'dune-faq', new URL(`@/assets/dune/faq.png`, import.meta.url).href,
       'dune-schedule', new URL(`@/assets/dune/schedule.png`, import.meta.url).href,
       ),
       // ... Add more games as needed

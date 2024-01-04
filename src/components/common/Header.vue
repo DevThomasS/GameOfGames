@@ -18,7 +18,11 @@
       </router-link>
     </div>
 
-    <div class="header-item header-link-c"/>
+    <div class="header-item header-link-c">
+      <router-link :to="selectedGame.route_c">
+        <img :src="selectedGame.image_c" style="max-height: 20px;" class="nav-img">
+      </router-link>
+    </div>
 
     <div class="header-item header-link-d">
       <router-link :to="selectedGame.route_d">

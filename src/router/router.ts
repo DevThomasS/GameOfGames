@@ -12,14 +12,19 @@ const routes = [
     component: () => import('@/views/dune/MainPage.vue'),
   },
   {
+    path: '/dune-components',
+    name: 'Dune Components',
+    component: () => import('@/views/dune/ComponentsPage.vue'),
+  },
+  {
     path: '/dune-rules',
     name: 'Dune Rules',
     component: () => import('@/views/dune/RulesPage.vue'),
   },
   {
-    path: '/dune-components',
-    name: 'Dune Components',
-    component: () => import('@/views/dune/ComponentsPage.vue'),
+    path: '/dune-faq',
+    name: 'Dune FAQ',
+    component: () => import('@/views/dune/FAQPage.vue'),
   },
   {
     path: '/dune-schedule',
