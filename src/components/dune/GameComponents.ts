@@ -15,6 +15,10 @@ export default class GameComponent {
     this.component_name = componentName;
   }
 
+  public static getComponentsByDefaultComponents(): GameComponent[] {
+    return this.getComponentsByIncludedComponents( [ 1, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, ] );
+  }
+
   public static getComponentsByIncludedComponents( includedComponents: number[] ): GameComponent[] {
     return this.getAllComponents().filter( component => includedComponents.includes( component.component_id ) );
   }

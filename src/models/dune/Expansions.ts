@@ -1,9 +1,9 @@
 export enum Expansions {
   BaseGame = 'Base Game',
-  IxiansTleilaxu = 'First Official Expansion: Ixians & Tleilaxu',
-  CHOAMRichese = 'Second Official Expansion: CHOAM & Richese',
-  EcazMoritani = 'Third Official Expansion: Ecaz & Moritani',
-  FactionLeaderBetrayalObjective = 'Unofficial Expansion: Faction Leaders, Karama Powers, Betrayals, & Objectives',
-  DoubleSpiceBlowKaramaStop = 'Unofficial Expansion: Double Spice Blow & Karama Stop',
+  IxiansTleilaxu = 'Ixians & Tleilaxu',
+  CHOAMRichese = 'CHOAM & Richese',
+  EcazMoritani = 'Ecaz & Moritani',
+  FactionLeaderBetrayalObjective = 'Unofficial 1',
+  DoubleSpiceBlowKaramaStop = 'Unofficial 2',
   // ... Add more expansions as needed
 }
