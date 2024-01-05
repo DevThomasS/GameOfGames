@@ -90,3 +90,11 @@ $main-font: 'Roboto';
   0 0 1px rgba(0, 0, 0),
   0 0 1px rgba(0, 0, 0);
 }
+
+.subtitle-text {
+  font-size: 15px;
+  font-family: $main-font;
+  font-style: italic;
+  color: rgba(0, 0, 0);
+  text-shadow: 0 0 1px rgb(0, 0, 0, 0.3);
+}

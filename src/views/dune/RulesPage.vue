@@ -2,17 +2,16 @@
   <div class="default-page">
     <div class="dune-box">
       <h1 class="h1-text">
-        dunE RulEs
+        DUNE Rules
       </h1>
-      <v-divider :thickness="6" class="border-opacity-100" color="rgba(175, 145, 48, 0.4)" />
+      <v-divider :thickness="6" class="dune-divider"/>
       <h2 class="h2-text">
-        Exhibition RulEs
+        exhibition Rules
       </h2>
       <p class="p-text">
         When playing a one-off game, players are free to agree to use any component; it is assumed the following components will be used unless otherwise agreed upon by the players:
       </p>
       <ExpansionPanel />
-      <br>
       <p class="p-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.
         Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
@@ -63,7 +62,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Factions } from '@/models/models';
-import ExpansionPanel from '@/components/common/ExpansionPanel.vue';
+import ExpansionPanel from '@/components/dune/ExpansionPanel.vue';
 
 export default defineComponent({
   components: {
@@ -88,4 +87,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "@/styles/common.scss";
 @import "@/styles/dune.scss";
+
+.dune-divider {
+  color: rgba(175, 145, 48);
+  border-radius: 10px;
+}
 </style>
