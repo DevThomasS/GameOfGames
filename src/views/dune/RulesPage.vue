@@ -11,27 +11,8 @@
       <p class="p-text">
         When playing a one-off game, players are free to agree to use any component; it is assumed the following components will be used unless otherwise agreed upon by the players:
       </p>
-      <!-- Default Components Dropdown -->
-      <div class="dropdown-container">
-        <div class="dropdown-header" @click="toggleDropdown()">
-          <span class="dropdown-text">Default Components</span>
-          <span :class="{ 'rotate-arrow': isDropdownExpanded }">&#9660;</span>
-        </div>
-        <v-expand-transition>
-          <div v-if="isDropdownExpanded" class="dropdown-content">
-          <v-list>
-            <v-list-item v-for="component in gameComponents" :key="component.component_id">
-              <v-list-item-content>
-                <v-list-item-title>
-                  <a :href="getComponentLink( component.component_id )" target="_blank">{{ component.component_name }}</a>
-                </v-list-item-title>
-                <v-list-item-subtitle>{{ component.expansion }}</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-          </div>
-        </v-expand-transition>
-      </div>
+      <ExpansionPanel />
+      <br>
       <p class="p-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.
         Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
@@ -82,14 +63,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Factions } from '@/models/models';
-import DuneComponent from '@/components/dune/GameComponents';
+import ExpansionPanel from '@/components/common/ExpansionPanel.vue';
 
 export default defineComponent({
+  components: {
+    ExpansionPanel,
+  },
   data() {
     return {
       expandedIndex: -1,
-      isDropdownExpanded: false,
-      gameComponents: DuneComponent.getComponentsByDefaultComponents(),
     };
   },
   methods: {
@@ -98,13 +80,6 @@ export default defineComponent({
       Factions.Fremen.toString(), Factions.Harkonnen.toString(), Factions.SpacingGuild.toString(),
       Factions.Ixians.toString(), Factions.Tleilaxu.toString(), Factions.CHOAM.toString(),
       Factions.Richese.toString(), Factions.Ecaz.toString(), Factions.Moritani.toString(), ];
-    },
-    getComponentLink( componentId: number ): string {
-      // return `/dune-components/${component.toLowerCase().replace(/\s+/g, '-')}`;
-      return `/dune-components`;
-    },
-    toggleDropdown() {
-      this.isDropdownExpanded = !this.isDropdownExpanded;
     },
   },
 });
