@@ -1,4 +1,4 @@
-import { Alarms, Expansions } from '../../models/models';
+import { Alarms, Expansions } from '../../models';
 
 export default class Notes {
   subject: string;

@@ -1,4 +1,4 @@
-import { Factions, People, VictoryTypes } from '../../models/models';
+import { Factions, People, VictoryTypes } from '../../models';
 
 export default class Players {
   person: People;

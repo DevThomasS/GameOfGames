@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import DuneComponent from '@/components/dune/GameComponents';
+import { DuneComponent } from '@/models/models';
 import Router from '@/router/router';
 
 // TODO: Make this a generic component that can be used for any game and page.

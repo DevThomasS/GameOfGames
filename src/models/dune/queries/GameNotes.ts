@@ -1,5 +1,4 @@
-import { Alarms, Expansions } from '../../models/models';
-import Notes from './Notes';
+import { Alarms, Expansions, Notes } from '../../models';
 
 export default class GameNotes {
   game_id: number;

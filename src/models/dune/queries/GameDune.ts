@@ -1,12 +1,10 @@
-import { Locations } from '../../models/common/Locations';
-import GameComponent from './GameComponents';
-import Players from './Players';
+import { Locations, Players, DuneComponent } from '../../models';
 
 export default class GameDune {
   game_id: number;
   end_turn: number;
   players: Players[];
-  components: GameComponent[];
+  components: DuneComponent[];
   start: Date;
   end: Date;
   location: Locations;
@@ -15,7 +13,7 @@ export default class GameDune {
     gameId: number,
     endTurn: number,
     players: Players[],
-    components: GameComponent[],
+    components: DuneComponent[],
     start: Date,
     end: Date,
     location: Locations
@@ -50,7 +48,7 @@ export default class GameDune {
       new GameDune( 0, 10,
         Players.getPlayersByGameId( 0 ),
         // Did not include: normal spice blows, technology tokens, advanced strongholds, leader skill cards, objective cards.
-        GameComponent.getComponentsByExcludedComponents( [ 0, 5, 6, 7, 16 ] ),
+        DuneComponent.getComponentsByExcludedComponents( [ 0, 5, 6, 7, 16 ] ),
         new Date( 2023, 11, 26 ),
         new Date( 2023, 11, 29 ),
         Locations.Chicago

@@ -23,7 +23,7 @@
 import {
   Atreides, BeneGesserit, Emperor, Fremen, Harkonnen, SpacingGuild,
   Ixians, Tleilaxu, CHOAM, Richese, Ecaz, Moritani,
-} from '@/components/dune/factions/factions';
+} from '@/components/components';
 import { defineComponent } from 'vue';
 
 export default defineComponent({

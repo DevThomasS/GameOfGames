@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import GameHeaderInfo from '@/models/common/GameHeaderInfo';
+import { GameHeaderInfo } from '@/models/models';
 
 export default {
   data() {

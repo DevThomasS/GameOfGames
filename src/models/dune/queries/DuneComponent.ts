@@ -1,6 +1,6 @@
-import { Expansions } from '../../models/dune/Expansions';
+import { Expansions } from '../../models';
 
-export default class GameComponent {
+export default class DuneComponent {
   component_id: number;
   expansion: Expansions;
   component_name: string;
@@ -15,96 +15,96 @@ export default class GameComponent {
     this.component_name = componentName;
   }
 
-  public static getComponentsByDefaultComponents(): GameComponent[] {
+  public static getComponentsByDefaultComponents(): DuneComponent[] {
     return this.getComponentsByIncludedComponents( [ 1, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, ] );
   }
 
-  public static getComponentsByIncludedComponents( includedComponents: number[] ): GameComponent[] {
+  public static getComponentsByIncludedComponents( includedComponents: number[] ): DuneComponent[] {
     return this.getAllComponents().filter( component => includedComponents.includes( component.component_id ) );
   }
 
-  public static getComponentsByExcludedComponents( excludedComponents: number[] ): GameComponent[] {
+  public static getComponentsByExcludedComponents( excludedComponents: number[] ): DuneComponent[] {
     return this.getAllComponents().filter( component => !excludedComponents.includes( component.component_id ) );
   }
 
   //////////////////////////////////////////
   //////////    Database Proxy    //////////
   //////////////////////////////////////////
-  private static getAllComponents(): GameComponent[] {
+  private static getAllComponents(): DuneComponent[] {
     return [
-      new GameComponent( 0,
+      new DuneComponent( 0,
         Expansions.BaseGame,
         'Spice Blow Cards (21)'
       ),
-      new GameComponent( 1,
+      new DuneComponent( 1,
         Expansions.BaseGame,
         'Treachery Deck (33)'
       ),
-      new GameComponent( 2,
+      new DuneComponent( 2,
         Expansions.IxiansTleilaxu,
         'Cheap Hero Traitor Card (1)'
       ),
-      new GameComponent( 3,
+      new DuneComponent( 3,
         Expansions.IxiansTleilaxu,
         'Sandtrout Spice Card (1)'
       ),
-      new GameComponent( 4,
+      new DuneComponent( 4,
         Expansions.IxiansTleilaxu,
         'Extra Treachery Cards (14)'
       ),
-      new GameComponent( 5,
+      new DuneComponent( 5,
         Expansions.IxiansTleilaxu,
         'Technology Tokens (3)'
       ),
-      new GameComponent( 6,
+      new DuneComponent( 6,
         Expansions.CHOAMRichese,
         'Advanced Stronghold Cards (6)'
       ),
-      new GameComponent( 7,
+      new DuneComponent( 7,
         Expansions.CHOAMRichese,
         'Leader Skill Cards (14)'
       ),
-      new GameComponent( 8,
+      new DuneComponent( 8,
         Expansions.EcazMoritani,
         'Homeworlds (13)'
       ),
-      new GameComponent( 9,
+      new DuneComponent( 9,
         Expansions.EcazMoritani,
         'Nexus Cards (12)'
       ),
-      new GameComponent( 10,
+      new DuneComponent( 10,
         Expansions.EcazMoritani,
         'Discovery Tokens (8)'
       ),
-      new GameComponent( 11,
+      new DuneComponent( 11,
         Expansions.EcazMoritani,
         'Extra Treachery Cards (3)'
       ),
-      new GameComponent( 12,
+      new DuneComponent( 12,
         Expansions.EcazMoritani,
         'Great Maker Spice Card (1)'
       ),
-      new GameComponent( 13,
+      new DuneComponent( 13,
         Expansions.FactionLeaderBetrayalObjective,
         'Faction Leaders (13)'
       ),
-      new GameComponent( 14,
+      new DuneComponent( 14,
         Expansions.FactionLeaderBetrayalObjective,
         'Karama Power Cards (12)'
       ),
-      new GameComponent( 15,
+      new DuneComponent( 15,
         Expansions.FactionLeaderBetrayalObjective,
         'Alliance Betrayal Cards (10)'
       ),
-      new GameComponent( 16,
+      new DuneComponent( 16,
         Expansions.FactionLeaderBetrayalObjective,
         'Objective Cards (9)'
       ),
-      new GameComponent( 17,
+      new DuneComponent( 17,
         Expansions.DoubleSpiceBlowKaramaStop,
         'Double Spice Blow Cards (9)'
       ),
-      new GameComponent( 18,
+      new DuneComponent( 18,
         Expansions.DoubleSpiceBlowKaramaStop,
         'Special Event Spice Cards (6)'
       ),
