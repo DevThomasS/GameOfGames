@@ -12,64 +12,20 @@
         When playing a one-off game, players are free to agree to use any component; it is assumed the following components will be used with the
       </p>
       <p class="p-text">
-        Gale Force Nine edition of Dune (2019) unless otherwise agreed upon by the players:
+        Gale Force Nine edition of Dune (2019), unless otherwise agreed upon by the players:
       </p>
-      <ExpansionPanel />
+      <DuneComponentPanel />
       <p class="p-text">
         Both faction and seating selections are determined by the players. Players are allowed to scheme with one another before the game begins,
-        but no plan made before the game begins is binding.
+        but no agreement made between players before the game begins is binding.
       </p>
       <br>
       <p class="p-text">
         Every component of the base game will be in play, including all Advanced Game rules with the following exceptions, unless otherwise agreed:
       </p>
       <br>
-      <v-row class="p-text">
-        <v-col cols="1"/>
-        <v-col cols="4">
-          <li>
-            <v-list-item-title>No Increased Spice Flow</v-list-item-title>
-            <v-list-item-subtitle>
-              The component,
-              <span class="link" @click="redirectToComponent( 17 )">Double Spice Blow Cards,</span>
-              will be used in place of drawing two spice cards per turn.
-            </v-list-item-subtitle>
-          </li>
-        </v-col>
-        <v-col cols="1"/>
-        <v-col cols="5">
-          <li>
-            <v-list-item-title>Modified Atreides Bidding Advantage</v-list-item-title>
-            <v-list-item-subtitle>
-              The player may only look at each Treachery card after it has been purchased (instead of before bidding has begun).
-            </v-list-item-subtitle>
-          </li>
-        </v-col>
-        <v-col cols="1"/>
-      </v-row>
-      <v-row class="p-text">
-        <v-col cols="1"/>
-        <v-col cols="4">
-          <li>
-            <v-list-item-title>First Turn Spice Card Must Be A Spice Blow</v-list-item-title>
-            <v-list-item-subtitle>
-              Any non-spice blow card, such as a sandworm, special, or spice stock, must be set aside and
-              shuffled back into the spice deck once the first spice blow has been drawn. 
-            </v-list-item-subtitle>
-          </li>
-        </v-col>
-        <v-col cols="1"/>
-        <v-col cols="5">
-          <li>
-            <v-list-item-title>Additional Rule: Bidding Phase Ante</v-list-item-title>
-            <v-list-item-subtitle>
-              When the bidding of each Treachery card begins, in storm order,
-              the first player who has spice does not have a full hand of Treachery cards must bid exactly one spice.
-            </v-list-item-subtitle>
-          </li>
-        </v-col>
-        <v-col cols="1"/>
-      </v-row>
+      <DuneRulesExceptionList />
+      <br>
       <h2 class="h2-text">
         touRnamEnt RulEs
       </h2>
@@ -96,30 +52,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Factions } from '@/models/models';
-import { ExpansionPanel } from '@/components/components';
-import Router from '@/router/router';
+import { DuneComponentPanel, DuneRulesExceptionList, } from '@/components/components';
 
 export default defineComponent({
   components: {
-    ExpansionPanel,
-  },
-  data() {
-    return {
-      expandedIndex: -1,
-    };
-  },
-  methods: {
-    getAllFactions(): string[] {
-      return [ Factions.Atreides.toString(), Factions.BeneGesserit.toString(), Factions.Emperor.toString(),
-      Factions.Fremen.toString(), Factions.Harkonnen.toString(), Factions.SpacingGuild.toString(),
-      Factions.Ixians.toString(), Factions.Tleilaxu.toString(), Factions.CHOAM.toString(),
-      Factions.Richese.toString(), Factions.Ecaz.toString(), Factions.Moritani.toString(), ];
-    },
-    redirectToComponent( componentId: number ): void {
-      const componentLink = `/dune-components/${componentId}`;
-      Router.push( componentLink )
-    },
+    DuneComponentPanel,
+    DuneRulesExceptionList,
   },
 });
 </script>

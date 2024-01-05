@@ -1,6 +1,7 @@
-import ExpansionPanel from './common/ExpansionPanel.vue';
 import Header from './common/Header.vue';
 
+import DuneComponentPanel from './dune/DuneComponentPanel.vue';
+import DuneRulesExceptionList from './dune/DuneRulesExceptionList.vue';
 import Atreides from './dune/factions/Atreides.vue';
 import BeneGesserit from './dune/factions/BeneGesserit.vue';
 import Emperor from './dune/factions/Emperor.vue';
@@ -15,7 +16,8 @@ import Ecaz from './dune/factions/Ecaz.vue';
 import Moritani from './dune/factions/Moritani.vue';
 
 export {
-  ExpansionPanel,
+  DuneComponentPanel,
+  DuneRulesExceptionList,
   Header,
   Atreides,
   BeneGesserit,

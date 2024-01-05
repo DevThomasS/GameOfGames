@@ -37,11 +37,9 @@
 import { DuneComponent } from '@/models/models';
 import Router from '@/router/router';
 
-// TODO: Make this a generic component that can be used for any game and page.
 export default {
   data() {
     return {
-      isPanelExpanded: false,
       gameComponents: DuneComponent.getComponentsByDefaultComponents(),
     };
   },
@@ -51,9 +49,6 @@ export default {
       const startIndex = ( columnNumber - 1 ) * componentsPerPage;
       const endIndex = columnNumber * componentsPerPage;
       return this.gameComponents.slice( startIndex, endIndex );
-    },
-    togglePanel() {
-      this.isPanelExpanded = !this.isPanelExpanded;
     },
     redirectToComponent( componentId: number ): void {
       const componentLink = `/dune-components/${componentId}`;
