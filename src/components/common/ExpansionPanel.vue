@@ -6,25 +6,25 @@
           <v-col cols="4" v-for="( component, index ) in getColumnComponents( 1 )" :key="index">
             <v-list-item class="item">
               <v-list-item-title>
-                <div class="link p-text" @click="redirectToComponent(component.component_id)"> {{ component.component_name }} </div>
+                <div class="link p-text" @click="redirectToComponent( component.component_id )"> {{ component.component_name }} </div>
               </v-list-item-title>
-              <v-list-item-subtitle class="subtitle-text">{{ component.expansion }}</v-list-item-subtitle>
+              <v-list-item-subtitle class="subtitle-text"> {{ component.expansion }} </v-list-item-subtitle>
             </v-list-item>
           </v-col>
           <v-col cols="4" v-for="( component, index ) in getColumnComponents( 2 )" :key="index">
             <v-list-item class="item">
               <v-list-item-title>
-                <div class="link p-text" @click="redirectToComponent(component.component_id)"> {{ component.component_name }} </div>
+                <div class="link p-text" @click="redirectToComponent( component.component_id )"> {{ component.component_name }} </div>
               </v-list-item-title>
-              <v-list-item-subtitle class="subtitle-text">{{ component.expansion }}</v-list-item-subtitle>
+              <v-list-item-subtitle class="subtitle-text"> {{ component.expansion }} </v-list-item-subtitle>
             </v-list-item>
           </v-col>
           <v-col cols="4" v-for="( component, index ) in getColumnComponents( 3 )" :key="index">
             <v-list-item class="item">
               <v-list-item-title>
-                <div class="link p-text" @click="redirectToComponent(component.component_id)"> {{ component.component_name }} </div>
+                <div class="link p-text" @click="redirectToComponent( component.component_id )"> {{ component.component_name }} </div>
               </v-list-item-title>
-              <v-list-item-subtitle class="subtitle-text">{{ component.expansion }}</v-list-item-subtitle>
+              <v-list-item-subtitle class="subtitle-text"> {{ component.expansion }} </v-list-item-subtitle>
             </v-list-item>
           </v-col>
         </v-row>
@@ -77,14 +77,5 @@ export default {
 .panel-with-padding {
   padding-top: 0px;
   padding-bottom: 10px;
-}
-
-.link {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.link:hover {
-  text-decoration: underline;
 }
 </style>
