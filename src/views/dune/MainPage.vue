@@ -1,22 +1,28 @@
 <template>
   <div class="default-page">
     <div class="dune-box">
-      <v-row>
+      <v-row class="centered-row">
+        <h2 class="h2-text">
+          Player Standings
+        </h2>
         <SearchPanel />
-        <Factions />
+        <h2 class="h2-text">
+          House Standings
+        </h2>
+        <FactionStatistics />
       </v-row>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Factions from '@/components/dune/Factions.vue';
+import FactionStatistics from '@/components/dune/FactionStatistics.vue';
 import SearchPanel from '@/components/dune/SearchPanel.vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   components: {
-    Factions,
+    FactionStatistics,
     SearchPanel,
   },
 });

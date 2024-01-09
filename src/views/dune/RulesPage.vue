@@ -9,15 +9,26 @@
         exhibition RulEs
       </h2>
       <p class="p-text">
-        When playing a one-off game, players are free to agree to use any component; it is assumed the following components will be used with the
-      </p>
-      <p class="p-text">
-        Gale Force Nine edition of Dune (2019), unless otherwise agreed upon by the players:
+        When playing a one-off game, players are free to agree to use any component; however, it is assumed the following components will be used with
+        the Gale Force Nine edition of Dune (2019), unless otherwise agreed upon by the players:
       </p>
       <DuneComponentPanel />
       <p class="p-text">
-        Both faction and seating selections are determined by the players. Players are allowed to scheme with one another before the game begins,
-        but no agreement made between players before the game begins is binding.
+        Both faction and seating selections are determined by the players. Players are allowed to scheme with one another before the game begins, but
+        no agreement made between players before the game begins is binding.    
+      </p>
+      <br>
+      <p class="p-text">
+        Binding agreements are made only when:
+      </p>
+      <ul class="p-text tabbed-list">
+        <li>Player announces the terms to all other players at the table (including players not directly involved in the deal).</li>
+        <li>All players (including those not directly involved) acknowledge their understanding of the terms.</li>
+        <li>All directly involved players accept the terms by shaking hands.</li>
+      </ul>
+      <p class="p-text">
+        In case of a dispute over the terms of a binding agreement, the resolution
+        will be determined by a plurality vote of all the players (not just the players involved in the dispute).
       </p>
       <br>
       <p class="p-text">
@@ -52,8 +63,9 @@
 </template>
 
 <script lang="ts">
+import DuneComponentPanel from '@/components/dune/DuneComponentPanel.vue';
+import DuneRulesExceptionList from '@/components/dune/DuneRulesExceptionList.vue';
 import { defineComponent } from 'vue';
-import { DuneComponentPanel, DuneRulesExceptionList, } from '@/components/components';
 
 export default defineComponent({
   components: {
@@ -70,5 +82,9 @@ export default defineComponent({
 .dune-divider {
   color: rgba(175, 145, 48);
   border-radius: 10px;
+}
+
+.tabbed-list {
+  margin-left: 40px;
 }
 </style>
