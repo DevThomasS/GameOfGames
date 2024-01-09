@@ -58,7 +58,7 @@ export default class FactionStatistics {
       this.getChampion( wins ),
       ( games.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( games.length || 1 ),
       this.getChampion( defeats ),
-      Factions.Unknown
+      this.getRivalHouse( defeats )
     );
   }
   
@@ -122,7 +122,7 @@ export default class FactionStatistics {
       this.getChampion( wins ),
       ( games.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( games.length || 1 ),
       this.getChampion( defeats ),
-      Factions.Unknown
+      this.getRivalHouse( defeats )
     );
   }
   
