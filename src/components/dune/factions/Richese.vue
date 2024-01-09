@@ -1,59 +1,73 @@
 <template>
-  <v-expansion-panel title="RICHESE" class="transparent-panel h2-text">
+  <v-expansion-panel :title="factionData.faction" class="transparent-panel h2-text">
     <v-expansion-panel-text>
       <v-row>
-        <v-col cols="4" v-for="( component, index ) in getColumnComponents( 1 )" :key="index">
-          <v-list-item class="item">
-            <v-list-item-title>
-              <div class="link p-text" @click="redirectToComponent( component.component_id )"> {{ component.component_name }} </div>
-            </v-list-item-title>
-            <v-list-item-subtitle class="subtitle-text"> {{ component.expansion }} </v-list-item-subtitle>
-          </v-list-item>
-        </v-col>
-        <v-col cols="4" v-for="( component, index ) in getColumnComponents( 2 )" :key="index">
-          <v-list-item class="item">
-            <v-list-item-title>
-              <div class="link p-text" @click="redirectToComponent( component.component_id )"> {{ component.component_name }} </div>
-            </v-list-item-title>
-            <v-list-item-subtitle class="subtitle-text"> {{ component.expansion }} </v-list-item-subtitle>
-          </v-list-item>
-        </v-col>
-        <v-col cols="4" v-for="( component, index ) in getColumnComponents( 3 )" :key="index">
-          <v-list-item class="item">
-            <v-list-item-title>
-              <div class="link p-text" @click="redirectToComponent( component.component_id )"> {{ component.component_name }} </div>
-            </v-list-item-title>
-            <v-list-item-subtitle class="subtitle-text"> {{ component.expansion }} </v-list-item-subtitle>
-          </v-list-item>
-        </v-col>
+        <v-list-item>
+          <v-list-item-title>
+            <div>{{ Math.round( factionData.usage_rate * 100 ) }}%</div>
+          </v-list-item-title>
+          <v-list-item-subtitle class="subtitle-text">Usage Rate</v-list-item-subtitle>
+        </v-list-item>
+
+        <v-list-item>
+          <v-list-item-title>
+            <div>{{ Math.round( factionData.win_rate * 100 ) }}%</div>
+          </v-list-item-title>
+          <v-list-item-subtitle class="subtitle-text">Win Rate</v-list-item-subtitle>
+        </v-list-item>
+
+        <v-list-item>
+          <v-list-item-title>
+            <div>{{ factionData.champion }}</div>
+          </v-list-item-title>
+          <v-list-item-subtitle class="subtitle-text">Champion</v-list-item-subtitle>
+        </v-list-item>
+
+        <v-list-item>
+          <v-list-item-title>
+            <div>{{ factionData.average_game_length !== 0 ? 'Turn ' + factionData.average_game_length : 'n/a' }}</div>
+          </v-list-item-title>
+          <v-list-item-subtitle class="subtitle-text">Average Game Length</v-list-item-subtitle>
+        </v-list-item>
+
+        <v-list-item>
+          <v-list-item-title>
+            <div>{{ factionData.adversary }}</div>
+          </v-list-item-title>
+          <v-list-item-subtitle class="subtitle-text">Adversary</v-list-item-subtitle>
+        </v-list-item>
+
+        <v-list-item>
+          <v-list-item-title>
+            <div>{{ factionData.rival_house }}</div>
+          </v-list-item-title>
+          <v-list-item-subtitle class="subtitle-text">Rival House</v-list-item-subtitle>
+        </v-list-item>
       </v-row>
     </v-expansion-panel-text>
   </v-expansion-panel>
 </template>
 
 <script lang="ts">
-import { DuneComponent } from '@/models/models';
-import Router from '@/router/router';
+import { Factions, FactionStatistics, GameDune, People, } from '@/models/models';
+import { defineComponent, PropType } from 'vue';
 
-export default {
+export default defineComponent({
+  props: {
+    gameData: {
+      type: Array as PropType<GameDune[]>,
+      required: true,
+    },
+  },
   data() {
     return {
-      gameComponents: DuneComponent.getComponentsByDefaultComponents(),
+      factionData: new FactionStatistics( Factions.Unknown, 0, 0, People.Unknown, 0, People.Unknown, Factions.Unknown ),
     };
   },
-  methods: {
-    getColumnComponents( columnNumber: number ): DuneComponent[] {
-      const componentsPerPage = 4; // Max components per column
-      const startIndex = ( columnNumber - 1 ) * componentsPerPage;
-      const endIndex = columnNumber * componentsPerPage;
-      return this.gameComponents.slice( startIndex, endIndex );
-    },
-    redirectToComponent( componentId: number ): void {
-      const componentLink = `/dune-components/${componentId}`;
-      Router.push( componentLink )
-    },
+  mounted() {
+    this.factionData = FactionStatistics.getRicheseStatistics( this.gameData, );
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -61,14 +75,5 @@ export default {
 
 .transparent-panel {
   background-color: rgba( 0, 0, 0, 0 );
-}
-
-.item {
-  padding: 0px;
-}
-
-.panel-with-padding {
-  padding-top: 0px;
-  padding-bottom: 10px;
 }
 </style>

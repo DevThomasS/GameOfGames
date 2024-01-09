@@ -40,7 +40,7 @@ import Router from '@/router/router';
 export default {
   data() {
     return {
-      gameComponents: DuneComponent.getComponentsByDefaultComponents(),
+      gameComponents: DuneComponent.getDefaultComponents(),
     };
   },
   methods: {

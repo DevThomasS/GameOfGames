@@ -1,6 +1,7 @@
 import GameHeaderInfo from './common/queries/GameHeaderInfo';
 import Notes from './common/queries/Notes';
 import DuneComponent from './dune/queries/DuneComponent';
+import FactionStatistics from './dune/queries/FactionStatistics';
 import GameDune from './dune/queries/GameDune';
 import GameNotes from './dune/queries/GameNotes';
 import Players from './dune/queries/Players';
@@ -19,4 +20,5 @@ export {
   GameDune,
   GameNotes,
   Players,
+  FactionStatistics,
 };

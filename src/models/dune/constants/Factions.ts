@@ -11,4 +11,5 @@ export enum Factions {
   CHOAM = 'CHOAM',
   Ecaz = 'Ecaz',
   Moritani = 'Moritani',
+  Unknown = 'n/a',
 }

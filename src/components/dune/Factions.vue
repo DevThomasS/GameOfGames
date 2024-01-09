@@ -5,7 +5,7 @@
         <v-card :color="getFactionColor( index )" :class="{ 'choam-card': isChoam( index ) }">
           <div class="faction-content">
             <div class="panel-container">
-              <component :is="component" />
+              <component :is="component" :gameData=allGames />
             </div>
             <div class="icon-container">
               <img :src="getFactionIconUrl( index )" class="faction-icon" />
@@ -19,11 +19,11 @@
 
 <script lang="ts">
 import { defineComponent, defineAsyncComponent, markRaw } from 'vue';
-import { Factions } from '@/models/models';
+import { Factions, GameDune, } from '@/models/models';
 
 // This is crucial in preventing unnecessary reactivity with components that may cause performance overhead.
 // Imo, importing a component should always return the object itself instead of a proxy, but the wizardry of Vue 3 is beyond me.
-// Something, something async components are always proxies, something, something, markRaw() is the solution. DO NOT TOUCH.
+// Something, something async components are always proxies, something, something, markRaw() is the solution.
 const asyncLoadComponent = ( name: string ) => {
   return markRaw(
     defineAsyncComponent( () => import( `@/components/dune/factions/${name}.vue` ) )
@@ -47,6 +47,7 @@ export default defineComponent({
         asyncLoadComponent( Factions.Ecaz ),
         asyncLoadComponent( Factions.Moritani ),
       ],
+      allGames: GameDune.getAllGames(),
     };
   },
   methods: {
@@ -113,9 +114,6 @@ export default defineComponent({
     isChoam( index: number ): boolean {
       return index === 8;
     },
-    getBorderColor(): string {
-      return 'rgba( 0, 0, 0, 1 )';
-    },
   },
 });
 </script>
@@ -130,12 +128,11 @@ export default defineComponent({
 .panel-container {
   padding-left: 10px;
   padding-right: 4px;
-  width: 82%;
+  width: 100%;
 }
 
 .icon-container {
-  width: 18%;
-  justify-content: flex-end;
+  padding: 2px;
 }
 
 .faction-icon {

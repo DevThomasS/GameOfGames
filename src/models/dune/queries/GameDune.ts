@@ -1,4 +1,4 @@
-import { Locations, Players, DuneComponent } from '../../models';
+import { DuneComponent, Factions, Locations, Players,  } from '../../models';
 
 export default class GameDune {
   game_id: number;
@@ -26,7 +26,7 @@ export default class GameDune {
     this.end = end;
     this.location = location;
   }
-
+  
   public static getGameByGameId( gameId: number ): GameDune {
     const game = this.getAllGames().find( game => game.game_id === gameId );
     return game ? game : new GameDune( -1, -1, [], [], new Date(), new Date(), Locations.Unknown );
@@ -43,12 +43,12 @@ export default class GameDune {
   //////////////////////////////////////////
   //////////    Database Proxy    //////////
   //////////////////////////////////////////
-  private static getAllGames(): GameDune[] {
+  public static getAllGames(): GameDune[] {
     return [
       new GameDune( 0, 10,
         Players.getPlayersByGameId( 0 ),
-        // Did not include: normal spice blows, technology tokens, advanced strongholds, leader skill cards, objective cards.
-        DuneComponent.getComponentsByExcludedComponents( [ 0, 5, 6, 7, 16 ] ),
+        // Default Exhibition + All extra Treachery Cards + Alliance Betrayal Cards
+        DuneComponent.getComponentsByQuery( [], [ 4, 11, 15 ] ),
         new Date( 2023, 11, 26 ),
         new Date( 2023, 11, 29 ),
         Locations.Chicago

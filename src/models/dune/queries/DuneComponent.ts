@@ -15,16 +15,17 @@ export default class DuneComponent {
     this.component_name = componentName;
   }
 
-  public static getComponentsByDefaultComponents(): DuneComponent[] {
+  public static getDefaultComponents(): DuneComponent[] {
     return this.getComponentsByIncludedComponents( [ 1, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, ] );
   }
 
   public static getComponentsByIncludedComponents( includedComponents: number[] ): DuneComponent[] {
     return this.getAllComponents().filter( component => includedComponents.includes( component.component_id ) );
   }
-
-  public static getComponentsByExcludedComponents( excludedComponents: number[] ): DuneComponent[] {
-    return this.getAllComponents().filter( component => !excludedComponents.includes( component.component_id ) );
+  
+  public static getComponentsByQuery( excludedDefaults: number[], includedExtras: number[] ): DuneComponent[] {
+    const alteredDefaults = this.getDefaultComponents().filter( component => !excludedDefaults.includes( component.component_id ) );
+    return alteredDefaults.concat( this.getComponentsByIncludedComponents( includedExtras ) );
   }
 
   //////////////////////////////////////////
@@ -50,7 +51,7 @@ export default class DuneComponent {
       ),
       new DuneComponent( 4,
         Expansions.IxiansTleilaxu,
-        'Extra Treachery Cards (14)'
+        'Extra Treachery Cards A (1)'
       ),
       new DuneComponent( 5,
         Expansions.IxiansTleilaxu,
@@ -78,7 +79,7 @@ export default class DuneComponent {
       ),
       new DuneComponent( 11,
         Expansions.EcazMoritani,
-        'Extra Treachery Cards (3)'
+        'Extra Treachery Cards B (3)'
       ),
       new DuneComponent( 12,
         Expansions.EcazMoritani,
