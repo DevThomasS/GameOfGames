@@ -93,7 +93,7 @@ export default defineComponent({
 @import "@/styles/dune.scss";
 
 .faction-content {
-  display: flex
+  display: flex;
 }
 
 .panel-container {

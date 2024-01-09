@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="player-card">
     <input type="text" v-model="searchQuery" placeholder="Search player..." @input="searchPlayer">
@@ -13,30 +11,41 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { FactionData, Factions, GameDune, GameStatistics, } from '@/models/models';
+import { defineComponent, } from 'vue';
+
+export default defineComponent({
   data() {
     return {
       searchQuery: '',
-      players: [ /* Array of player objects with 'name', 'wins', 'losses', etc. */ ],
-      selectedPlayer: null
+      people: FactionData.getFactions(),
+      selectedPerson: null,
+      allGames: GameDune.getAllGames(),
     };
   },
   methods: {
-    searchPlayer() {
-      // Perform filtering logic based on searchQuery
-      const result = this.players.find(player =>
-        player.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-      this.selectedPlayer = result || null;
-    }
-  }
-};
+    loadPersonData( personName: Factions ): void {
+      const personIndex = this.people.findIndex( person => person.person === personName );
+
+      if ( personIndex !== -1 ) {
+        this.people[personIndex].data = GameStatistics.getPersonStatistics( this.allGames, personName );
+        this.people[personIndex].loaded = true;
+      }
+    },
+  },
+});
 </script>
 
-<style scoped>
-/* Add some styles for your player card here */
-.player-card {
-  /* Style your player card container */
+<style lang="scss" scoped>
+@import "@/styles/dune.scss";
+
+.player-content {
+  display: flex;
+  width: 100%;
+}
+
+.transparent-panel {
+  background-color: rgba( 0, 0, 0, 0 );
 }
 </style>
