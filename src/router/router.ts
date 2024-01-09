@@ -32,6 +32,11 @@ const routes = [
     component: () => import('@/views/dune/FAQPage.vue'),
   },
   {
+    // TODO: Focus on component instead of sending to the top of the page.
+    path: '/dune-faq/:pathMatch(.*)*',
+    redirect: '/dune-faq',
+  },
+  {
     path: '/dune-schedule',
     name: 'Dune Schedule',
     component: () => import('@/views/dune/SchedulePage.vue'),

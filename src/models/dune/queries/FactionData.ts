@@ -16,7 +16,7 @@ export default class FactionData {
     this.loaded = false;
     this.color = color;
     this.image_url = imageUrl;
-    this.data = new GameStatistics( faction, People.Unknown, 0, 0, People.Unknown, 0, People.Unknown, Factions.Unknown, 0 );
+    this.data = new GameStatistics( faction, People.Unknown, 0, 0, People.Unknown, 0, People.Unknown, Factions.Unknown, [] );
   }
 
   //////////////////////////////////////////

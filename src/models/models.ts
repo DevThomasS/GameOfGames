@@ -5,6 +5,7 @@ import FactionData from './dune/queries/FactionData';
 import GameStatistics from './dune/queries/GameStatistics';
 import GameDune from './dune/queries/GameDune';
 import GameNotes from './dune/queries/GameNotes';
+import PersonData from './dune/queries/PersonData';
 import Players from './dune/queries/Players';
 
 export { Alarms } from './common/constants/Alarms';
@@ -22,5 +23,6 @@ export {
   GameStatistics,
   GameDune,
   GameNotes,
+  PersonData,
   Players,
 };

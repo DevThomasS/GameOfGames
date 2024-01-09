@@ -21,7 +21,8 @@
       </p>
       <br>
       <p class="p-text">
-        Every component of the base game will be in play, including all Advanced Game rules with the following exceptions, unless otherwise agreed:
+        Every rule - notably all Advanced rules - inside the core rule book & all six core factions,
+        as well as each expansion rule book and factions, will be in play with the following exceptions (unless otherwise agreed):
       </p>
       <br>
       <DuneRulesExceptionList />

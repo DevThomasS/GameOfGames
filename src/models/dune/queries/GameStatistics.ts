@@ -49,15 +49,19 @@ export default class GameStatistics {
       People.Unknown,
       ( games.length || 0 ) / ( totalGames.length || 1 ),
       ( wins.length || 0 ) / ( games.length || 1 ),
-      this.getChampion( wins ),
+      this.getMaxPerson( wins ), // Faction's best player.
       ( games.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( games.length || 1 ),
-      this.getChampion( defeats ),
-      this.getRivalHouse( defeats ),
+      this.getMaxPerson( defeats ), // Person who wins against this faction the most.
+      this.getMaxFaction( defeats ),// Faction who wins against this faction the most.
       [],
     );
   }
 
   public static getPersonStatistics( totalGames: GameDune[], person: People ): GameStatistics {
+    if ( person === People.Unknown )
+    {
+      return this.getUnknownPersonStatistics( totalGames );
+    }
     const games = totalGames.filter( game => game.players.find( player => player.person === person ) );
     const wins = this.getPersonWins( games, person );
     const defeats = this.getPersonDefeats( games, person );
@@ -67,12 +71,26 @@ export default class GameStatistics {
       person,
       games.length,
       ( wins.length || 0 ) / ( games.length || 1 ),
-      this.getRivalHouse( wins ),
+      this.getMaxFaction( wins ), // Player's best faction.
       ( games.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( games.length || 1 ),
-      this.getChampion( defeats ),
-      this.getRivalHouse( defeats ),
-      this.getSeatRates( games, person ),
+      this.getMaxPerson( defeats ), // Person who wins against this person the most.
+      this.getMaxFaction( defeats ), // Faction who wins against this person the most.
+      [],
     );
+  }
+
+  private static getUnknownPersonStatistics( totalGames: GameDune[] ): GameStatistics {
+    return new GameStatistics(
+      Factions.Unknown,
+      People.Unknown,
+      totalGames.length,
+      0,
+      this.getMaxFaction( totalGames ), // Faction who has won the most.
+      ( totalGames.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( totalGames.length || 1 ),
+      People.Unknown,
+      Factions.Unknown,
+      this.getSeatRates( totalGames ),
+    )
   }
 
   private static getFactionWins( totalGames: GameDune[], faction: Factions ): GameDune[] {
@@ -85,7 +103,7 @@ export default class GameStatistics {
     return totalGames.filter( game => game.players.find( player => !victories.includes( player.victory_type ) && player.faction === faction ) );
   }
 
-  private static getChampion( games: GameDune[] ): People {
+  private static getMaxPerson( games: GameDune[] ): People {
     const victories = [ VictoryTypes.Alliance, VictoryTypes.MultiAlliance, VictoryTypes.Solo, VictoryTypes.SpecialFremen, VictoryTypes.SpecialSpacingGuild ];
     const prospects = [ { person: People.Unknown, victories: 0 } ];
   
@@ -106,7 +124,7 @@ export default class GameStatistics {
     return prospects.reduce( ( acc, person ) => person.victories > acc.victories ? person : acc ).person;
   }
 
-  private static getRivalHouse( games: GameDune[] ): Factions {
+  private static getMaxFaction( games: GameDune[] ): Factions {
     const victories = [ VictoryTypes.Alliance, VictoryTypes.MultiAlliance, VictoryTypes.Solo, VictoryTypes.SpecialFremen, VictoryTypes.SpecialSpacingGuild ];
     const prospects = [ { faction: Factions.Unknown, victories: 0 } ];
   
@@ -137,14 +155,14 @@ export default class GameStatistics {
     return totalGames.filter( game => game.players.find( player => !victories.includes( player.victory_type ) && player.person === person ) );
   }
 
-  private static getSeatRates( games: GameDune[], person: People ): number[] {
+  private static getSeatRates( games: GameDune[] ): number[] {
     const victories = [ VictoryTypes.Alliance, VictoryTypes.MultiAlliance, VictoryTypes.Solo, VictoryTypes.SpecialFremen, VictoryTypes.SpecialSpacingGuild ];
-    const seatRates = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+    const seatRates = [ 0, 0, 0, 0, 0, 0, ];
   
     for ( const game of games ) {
-      const wonGame = game.players.filter( player => victories.includes( player.victory_type ) && player.person === person );
+      const wonGame = game.players.filter( player => victories.includes( player.victory_type ) );
       
-      if ( wonGame ) {
+      if ( wonGame.length > 0 ) {
         seatRates[wonGame[0].seat_position]++;
       }
     }

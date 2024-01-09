@@ -1,14 +1,14 @@
 <template>
   <v-expansion-panels multiple>
     <v-row>
-      <v-col v-for="faction in factions" :key="faction.faction" cols="6">
+      <v-col v-for="faction in factionData" :key="faction.faction" cols="6">
         <v-card :color="faction.color" :class="{ 'choam-card': faction.faction == 'CHOAM' }">
           <div class="faction-content">
             <div class="panel-container">
               <v-expansion-panel :title="faction.faction" class="transparent-panel h2-text"
                 @click="faction.loaded ? null : loadFactionData( faction.faction )"
               >
-                <v-expansion-panel-text>
+                <v-expansion-panel-text class="panel-text">
                   <v-row>
                     <v-list-item>
                       <v-list-item-title>
@@ -72,17 +72,17 @@ import { defineComponent, } from 'vue';
 export default defineComponent({
   data() {
     return {
-      factions: FactionData.getFactions(),
+      factionData: FactionData.getFactions(),
       allGames: GameDune.getAllGames(),
     };
   },
   methods: {
     loadFactionData( factionName: Factions ): void {
-      const factionIndex = this.factions.findIndex( faction => faction.faction === factionName );
+      const factionIndex = this.factionData.findIndex( faction => faction.faction === factionName );
 
       if ( factionIndex !== -1 ) {
-        this.factions[factionIndex].data = GameStatistics.getFactionStatistics( this.allGames, factionName );
-        this.factions[factionIndex].loaded = true;
+        this.factionData[factionIndex].data = GameStatistics.getFactionStatistics( this.allGames, factionName );
+        this.factionData[factionIndex].loaded = true;
       }
     },
   },
@@ -100,6 +100,10 @@ export default defineComponent({
   padding-left: 10px;
   padding-right: 4px;
   width: 100%;
+}
+
+.panel-text {
+  padding-top: 5px;
 }
 
 .transparent-panel {

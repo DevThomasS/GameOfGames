@@ -10,21 +10,17 @@ export default class PersonData {
   ) {
     this.person = person;
     this.loaded = false;
-    this.data = new GameStatistics( Factions.Unknown, People.Unknown, 0, 0, People.Unknown, 0, People.Unknown, Factions.Unknown, 0 );
+    this.data = new GameStatistics( Factions.Unknown, People.Unknown, 0, 0, People.Unknown, 0, People.Unknown, Factions.Unknown, [] );
   }
 
   //////////////////////////////////////////
   //////////    Database Proxy    //////////
   //////////////////////////////////////////
   public static getPeople(): PersonData[] {
-    return [
-      new PersonData( People.AliciaS ),
-      new PersonData( People.AmandaS ),
-      new PersonData( People.ChrisS ),
-      new PersonData( People.KenS ),
-      new PersonData( People.ThomasS ),
-      new PersonData( People.TomS ),
-      new PersonData( People.Unknown ), // Special case for seat position.
-    ];
+    const people = [];
+    for ( const person of Object.values( People ) ) {
+      people.push( new PersonData( person ) );
+    }
+    return people;
   }
 }
