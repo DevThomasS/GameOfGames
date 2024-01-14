@@ -26,9 +26,10 @@
         <li>All players (including those not directly involved) acknowledge their understanding of the terms.</li>
         <li>All directly involved players accept the terms by shaking hands.</li>
       </ul>
+      <br>
       <p class="p-text">
-        In case of a dispute over the terms of a binding agreement, the resolution
-        will be determined by a plurality vote of all the players (not just the players involved in the dispute).
+        In case of a dispute over the terms of a binding agreement between directly involved players, the resolution
+        will be determined by a plurality vote of all players (not just the players involved in the dispute).
       </p>
       <br>
       <p class="p-text">
@@ -78,13 +79,4 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "@/styles/common.scss";
 @import "@/styles/dune.scss";
-
-.dune-divider {
-  color: rgba(175, 145, 48);
-  border-radius: 10px;
-}
-
-.tabbed-list {
-  margin-left: 40px;
-}
 </style>

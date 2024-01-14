@@ -10,19 +10,20 @@
                 @click="faction.loaded ? null : loadFactionData( faction.faction )"
               >
                 <v-expansion-panel-text class="panel-text">
-                  <v-expansion-panels multiple>
-                    <!-- Interior Expansion panels for each question. -->
-                    <v-expansion-panel v-for="( faq, faqIndex ) in faction.data" :key="faqIndex"
-                      :title="faq.question" class="transparent-panel h2-text"
-                    >
-                      <v-expansion-panel-text class="panel-text">
-                        {{ faq.answer }}
-                      </v-expansion-panel-text>
-                    </v-expansion-panel>
-                    <p v-if="faction.data.length === 0" class="subtitle-text">
-                      No questions yet!
-                    </p>
-                  </v-expansion-panels>
+
+                  <v-card class="transparent-panel p-text" v-for="( faq, faqIndex ) in faction.data" :key="faqIndex">
+                    <v-list-item>
+                      <v-list-item-title>
+                        &#x2022; {{ faq.question }} &#x2022;
+                      </v-list-item-title>
+                      <v-list-item-subtitle class="panel-text p-text spaced">
+                        Answer: {{ faq.answer }}
+                      </v-list-item-subtitle>
+                    </v-list-item>
+                  </v-card>
+                  <p v-if="faction.data.length === 0" class="subtitle-text">
+                    No questions yet!
+                  </p>
                 </v-expansion-panel-text>
               </v-expansion-panel>
             </div>
@@ -52,7 +53,7 @@ export default defineComponent({
       const factionIndex = this.factionData.findIndex( faction => faction.faction === factionName );
 
       if (factionIndex !== -1) {
-        this.factionData[factionIndex].data = [];
+        this.factionData[factionIndex].data = FAQ.getFactionFAQ( factionName );
         this.factionData[factionIndex].loaded = true;
       }
     },
@@ -62,4 +63,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "@/styles/dune.scss";
+
+.spaced {
+  font-size: 16px;
+  line-height: 1.5;
+}
 </style>

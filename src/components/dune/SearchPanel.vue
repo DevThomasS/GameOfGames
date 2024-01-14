@@ -5,18 +5,18 @@
       <div v-if="selectedPerson">
         <div v-if="filteredPlayers.length > 0">
           <v-row>
-          <v-card class="filtered-person h2-text" v-for="player in filteredPlayers" :key="player.person"
-            @click="searchPlayer( player.person )"
-          >
-            <button v-if="selectedPerson.person !== 'n/a' && searchQuery !== ''">
-              X
-            </button>
-            <v-list-item>
-              <v-list-item-title>
-                {{ player.person }}
-              </v-list-item-title>
-            </v-list-item>
-          </v-card>
+            <v-card class="filtered-person h2-text" v-for="player in filteredPlayers" :key="player.person"
+              @click="searchPlayer( player.person )"
+            >
+              <button v-if="selectedPerson.person !== 'n/a' && searchQuery !== ''">
+                X
+              </button>
+              <v-list-item>
+                <v-list-item-title>
+                  {{ player.person }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-card>
           </v-row>
         </div>
       </div>
