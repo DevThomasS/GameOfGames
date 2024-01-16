@@ -65,6 +65,32 @@ export default class Players {
         Factions.SpacingGuild,
         VictoryTypes.Defeat
       ),
+      // Jan 13, 2024
+      new Players( 1, 1,
+        People.JackI,
+        Factions.SpacingGuild,
+        VictoryTypes.Alliance
+      ),
+      new Players( 1, 2,
+        People.Zak,
+        Factions.Atreides,
+        VictoryTypes.Defeat
+      ),
+      new Players( 1, 3,
+        People.Teddy,
+        Factions.Fremen,
+        VictoryTypes.Alliance
+      ),
+      new Players( 1, 4,
+        People.Zach,
+        Factions.BeneGesserit,
+        VictoryTypes.Defeat
+      ),
+      new Players( 1, 5,
+        People.Logan,
+        Factions.Harkonnen,
+        VictoryTypes.Defeat,
+      ),
       // ... Add more players as needed
     ];
   }

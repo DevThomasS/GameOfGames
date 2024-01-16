@@ -21,9 +21,6 @@
                       </v-list-item-subtitle>
                     </v-list-item>
                   </v-card>
-                  <p v-if="faction.data.length === 0" class="subtitle-text">
-                    No questions yet!
-                  </p>
                 </v-expansion-panel-text>
               </v-expansion-panel>
             </div>

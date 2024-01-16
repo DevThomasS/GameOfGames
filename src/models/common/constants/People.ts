@@ -5,6 +5,11 @@ export enum People {
   KenS = 'Ken S',
   ThomasS = 'Thomas S',
   TomS = 'Tom S',
-  Unknown = 'n/a',
+  JackI = 'Jack i',
+  Teddy = 'Teddy i',
+  Zach = 'Zach H',
+  Zak = 'Zak Ben A',
+  Logan = 'Logan R',
   // ... Add more people as needed
+  Unknown = 'n/a',
 }

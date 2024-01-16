@@ -162,8 +162,8 @@ export default class GameStatistics {
     for ( const game of games ) {
       const wonGame = game.players.filter( player => victories.includes( player.victory_type ) );
       
-      if ( wonGame.length > 0 ) {
-        seatRates[wonGame[0].seat_position]++;
+      for ( const victory of wonGame ) {
+        seatRates[victory.seat_position - 1]++;
       }
     }
 

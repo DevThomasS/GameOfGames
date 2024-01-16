@@ -1,12 +1,11 @@
-import { DuneComponent, Factions, Locations, Players,  } from '../../models';
+import { DuneComponent, Locations, Players,  } from '../../models';
 
 export default class GameDune {
   game_id: number;
   end_turn: number;
   players: Players[];
   components: DuneComponent[];
-  start: Date;
-  end: Date;
+  duration: number;
   location: Locations;
 
   constructor(
@@ -14,22 +13,20 @@ export default class GameDune {
     endTurn: number,
     players: Players[],
     components: DuneComponent[],
-    start: Date,
-    end: Date,
+    duration: number,
     location: Locations
   ) {
     this.game_id = gameId;
     this.end_turn = endTurn;
     this.players = players;
     this.components = components;
-    this.start = start;
-    this.end = end;
+    this.duration = duration;
     this.location = location;
   }
   
   public static getGameByGameId( gameId: number ): GameDune {
     const game = this.getAllGames().find( game => game.game_id === gameId );
-    return game ? game : new GameDune( -1, -1, [], [], new Date(), new Date(), Locations.Unknown );
+    return game ? game : new GameDune( -1, -1, [], [], -1, Locations.Unknown );
   }
 
   public static getGamesByLocation( location: Locations ): GameDune[] {
@@ -49,8 +46,14 @@ export default class GameDune {
         Players.getPlayersByGameId( 0 ),
         // Default Exhibition + All extra Treachery Cards + Alliance Betrayal Cards
         DuneComponent.getComponentsByQuery( [], [ 4, 11, 15 ] ),
-        new Date( 2023, 11, 26 ),
-        new Date( 2023, 11, 29 ),
+        8,
+        Locations.Chicago
+      ),
+      new GameDune( 1, 5,
+        Players.getPlayersByGameId( 1 ),
+        // Core Game - No Battle Payment, No Karama Faction Powers
+        DuneComponent.getComponentsByQuery( [ 2, 51, ], [] ),
+        3,
         Locations.Chicago
       ),
       // ... Add more games as needed

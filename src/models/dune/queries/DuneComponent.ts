@@ -16,7 +16,7 @@ export default class DuneComponent {
   }
 
   public static getDefaultComponents(): DuneComponent[] {
-    return this.getComponentsByIncludedComponents( [ 1, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, ] );
+    return this.getComponentsByIncludedComponents( [ 1, 2, 10, 11, 22, 23, 24, 26, 50, 51, 60, 61, ] );
   }
 
   public static getComponentsByIncludedComponents( includedComponents: number[] ): DuneComponent[] {
@@ -42,70 +42,74 @@ export default class DuneComponent {
         'Treachery Deck (33)'
       ),
       new DuneComponent( 2,
+        Expansions.BaseGame,
+        'Battle Payments (rules)'
+      ),
+      new DuneComponent( 10,
         Expansions.IxiansTleilaxu,
         'Cheap Hero Traitor Card (1)'
       ),
-      new DuneComponent( 3,
+      new DuneComponent( 11,
         Expansions.IxiansTleilaxu,
         'Sandtrout Spice Card (1)'
       ),
-      new DuneComponent( 4,
+      new DuneComponent( 12,
         Expansions.IxiansTleilaxu,
-        'Extra Treachery Cards A (1)'
+        'Extra Treachery Cards A (14)'
       ),
-      new DuneComponent( 5,
+      new DuneComponent( 13,
         Expansions.IxiansTleilaxu,
         'Technology Tokens (3)'
       ),
-      new DuneComponent( 6,
+      new DuneComponent( 20,
         Expansions.CHOAMRichese,
         'Advanced Stronghold Cards (6)'
       ),
-      new DuneComponent( 7,
+      new DuneComponent( 21,
         Expansions.CHOAMRichese,
         'Leader Skill Cards (14)'
       ),
-      new DuneComponent( 8,
+      new DuneComponent( 22,
         Expansions.EcazMoritani,
         'Homeworlds (13)'
       ),
-      new DuneComponent( 9,
+      new DuneComponent( 23,
         Expansions.EcazMoritani,
         'Nexus Cards (12)'
       ),
-      new DuneComponent( 10,
+      new DuneComponent( 24,
         Expansions.EcazMoritani,
         'Discovery Tokens (8)'
       ),
-      new DuneComponent( 11,
+      new DuneComponent( 25,
         Expansions.EcazMoritani,
         'Extra Treachery Cards B (3)'
       ),
-      new DuneComponent( 12,
+      new DuneComponent( 26,
         Expansions.EcazMoritani,
         'Great Maker Spice Card (1)'
       ),
-      new DuneComponent( 13,
+      new DuneComponent( 50,
         Expansions.FactionLeaderBetrayalObjective,
         'Faction Leaders (13)'
       ),
-      new DuneComponent( 14,
+      new DuneComponent( 51,
         Expansions.FactionLeaderBetrayalObjective,
         'Karama Power Cards (12)'
       ),
-      new DuneComponent( 15,
+      new DuneComponent( 52,
         Expansions.FactionLeaderBetrayalObjective,
         'Alliance Betrayal Cards (10)'
       ),
-      new DuneComponent( 16,
+      new DuneComponent( 53,
         Expansions.FactionLeaderBetrayalObjective,
         'Objective Cards (9)'
       ),
-      new DuneComponent( 17,
+      new DuneComponent( 60,
         Expansions.DoubleSpiceBlowKaramaStop,
         'Double Spice Blow Cards (9)'
       ),
-      new DuneComponent( 18,
+      new DuneComponent( 61,
         Expansions.DoubleSpiceBlowKaramaStop,
         'Special Event Spice Cards (6)'
       ),

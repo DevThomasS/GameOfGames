@@ -40,6 +40,8 @@ export default class GameNotes {
         [
           new Notes( 'Poison Blade + Shield Snooper', Expansions.BaseGame, Alarms.Watch,
           'Any limitations on either of these cards? Should they count as 2 treachery cards in battle?' ),
+          new Notes( 'Seat Chance %', Expansions.BaseGame, Alarms.Watch,
+          'Seat 1 last order: 17.92%;  Seat 2 last order: 16.56%;  Seat 3 last order: 16.33%;  Seat 4 last order: 16.32%;  Seat 5 last order: 16.33%;  Seat 6 last order: 16.33%' ),
         ]
       ),
       // ... Add more notes as needed
