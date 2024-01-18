@@ -16,7 +16,7 @@
                       <v-list-item-title>
                         &#x2022; {{ faq.question }} &#x2022;
                       </v-list-item-title>
-                      <v-list-item-subtitle class="panel-text p-text spaced">
+                      <v-list-item-subtitle class="panel-text p-text">
                         Answer: {{ faq.answer }}
                       </v-list-item-subtitle>
                     </v-list-item>

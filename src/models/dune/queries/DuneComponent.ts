@@ -43,7 +43,11 @@ export default class DuneComponent {
       ),
       new DuneComponent( 2,
         Expansions.BaseGame,
-        'Battle Payments (rules)'
+        'Advanced Combat (rule)'
+      ),
+      new DuneComponent( 3,
+        Expansions.BaseGame,
+        'Storm Movement (rule)'
       ),
       new DuneComponent( 10,
         Expansions.IxiansTleilaxu,

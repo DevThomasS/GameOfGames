@@ -92,36 +92,4 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "@/styles/dune.scss";
-
-.faction-content {
-  display: flex;
-}
-
-.panel-container {
-  padding-left: 10px;
-  padding-right: 4px;
-  width: 100%;
-}
-
-.panel-text {
-  padding-top: 5px;
-}
-
-.transparent-panel {
-  background-color: rgba( 0, 0, 0, 0 );
-}
-
-.icon-container {
-  padding: 2px;
-}
-
-.faction-icon {
-  max-height: 100px;
-}
-
-.choam-card {
-  background: linear-gradient( to bottom, rgba( 255, 0, 0, 0.05 ) 50%, rgba( 0, 0, 0, 0.05 ) 50% );
-  box-shadow: inset 0 0 0 9px rgba( 255, 255, 0, 0.1 ), inset 0 0 9px transparent;
-  box-sizing: border-box;
-}
 </style>
