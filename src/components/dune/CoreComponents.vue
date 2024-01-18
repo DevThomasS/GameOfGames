@@ -28,14 +28,16 @@ export default {
           title: "Spice Deck (21)",
           subtitle: "Six Shai-Halud cards & Fifteen Spice Blow cards - one card for each blow territory." +
           " Normally replaced by unofficial spice deck.",
-          image: new URL(`@/assets/dune/core/spice.png`, import.meta.url ).href,
+          // image: new URL(`@/assets/dune/core/spice.png`, import.meta.url ).href,
+          image: new URL(`@/assets/dune/core/rule.png`, import.meta.url ).href,
           class: 0,
         },
         {
           title: "Treachery Deck (33)",
           subtitle: "Core 33 treachery cards.  Shuffle discarded cards (if any) and replace deck as it runs empty." +
           " Always included in every game of Dune.",
-          image: new URL(`@/assets/dune/core/treachery.png`, import.meta.url ).href,
+          // image: new URL(`@/assets/dune/core/treachery.png`, import.meta.url ).href,
+          image: new URL(`@/assets/dune/core/rule.png`, import.meta.url ).href,
           class: 1,
         },
         {
@@ -49,7 +51,8 @@ export default {
           title: "Alliance Cards (6+)",
           subtitle: "1 Alliance card for each faction in the game.  Normally supplemented for each" +
           " included expansion faction. A faction's Alliance card is always removed if not in play.",
-          image: new URL(`@/assets/dune/core/alliance.png`, import.meta.url ).href,
+          // image: new URL(`@/assets/dune/core/alliance.png`, import.meta.url ).href,
+          image: new URL(`@/assets/dune/core/rule.png`, import.meta.url ).href,
           class: 1,
         },
         {
