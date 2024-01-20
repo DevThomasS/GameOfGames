@@ -16,7 +16,7 @@ export default class DuneComponent {
   }
 
   public static getDefaultComponents(): DuneComponent[] {
-    return this.getComponentsByIncludedComponents( [ 1, 2, 10, 11, 22, 23, 24, 26, 50, 51, 60, 61, ] );
+    return this.getComponentsByIncludedComponents( [ 1, 2, 10, 11, 20, 22, 23, 24, 26, 50, 51, 60, 61, ] );
   }
 
   public static getComponentsByIncludedComponents( includedComponents: number[] ): DuneComponent[] {
