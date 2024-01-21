@@ -56,6 +56,13 @@ export default class GameDune {
         3,
         Locations.Chicago
       ),
+      new GameDune( 2, 8,
+        Players.getPlayersByGameId( 2 ),
+        // Default Exhibition + Technology Cards
+        DuneComponent.getComponentsByQuery( [], [ 13, ] ),
+        9,
+        Locations.Madison
+      ),
       // ... Add more games as needed
     ];
   }

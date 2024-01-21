@@ -34,7 +34,7 @@
 
                     <v-list-item>
                       <v-list-item-title>
-                        <div>{{ faction.data.average_game_length !== 0 ? 'Turn ' + faction.data.average_game_length : 'n/a' }}</div>
+                        <div> {{  'Turn: ' + truncateAverageGameLength( faction.data.average_game_length ) }} </div>
                       </v-list-item-title>
                       <v-list-item-subtitle class="subtitle-text">Average Game Length</v-list-item-subtitle>
                     </v-list-item>
@@ -85,6 +85,12 @@ export default defineComponent({
         this.factionData[factionIndex].data = GameStatistics.getFactionStatistics( this.allGames, factionName );
         this.factionData[factionIndex].loaded = true;
       }
+    },
+    truncateAverageGameLength( avgLength: number ): string {
+      if ( avgLength === 0 ) {
+        return 'n/a';
+      }
+      return ( Math.round( avgLength * Math.pow( 10, 2 ) ) / Math.pow( 10, 2 ) ).toString();
     },
   },
 });

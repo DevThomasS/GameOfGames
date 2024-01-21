@@ -78,6 +78,13 @@ export default {
           image: new URL(`@/assets/dune/core/rule.png`, import.meta.url ).href,
           class: 2,
         },
+        {
+          title: "Advanced Strongholds (6)",
+          subtitle: "Shield Wall territory counts as a stronghold for victory purposes after 4 worms have appeared;" +
+          " occupancy still treated as rock territory (any number of players can be inside). Normally excluded from every game of Dune.",
+          image: new URL(`@/assets/dune/core/rule.png`, import.meta.url ).href,
+          class: 2,
+        },
         // Add more components as needed
       ],
     };

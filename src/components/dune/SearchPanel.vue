@@ -5,6 +5,7 @@
       <div v-if="selectedPerson">
         <div v-if="filteredPlayers.length > 0">
           <v-row>
+            <!-- TODO: Only show 3? Players with search at a time. -->
             <v-card class="filtered-person h2-text" v-for="player in filteredPlayers" :key="player.person"
               @click="searchPlayer( player.person )"
             >
@@ -46,8 +47,8 @@
         </v-list-item>
 
         <v-list-item>
-          <v-list-item-title>
-            <div>{{ selectedPerson.data.average_game_length !== 0 ? 'Turn ' + selectedPerson.data.average_game_length : 'n/a' }}</div>
+          <v-list-item-title class="truncate-decimal">
+            <div> {{  'Turn: ' + truncateAverageGameLength( selectedPerson.data.average_game_length ) }} </div>
           </v-list-item-title>
           <v-list-item-subtitle class="subtitle-text">Average Game Length</v-list-item-subtitle>
         </v-list-item>
@@ -104,7 +105,7 @@ export default defineComponent({
         return filteredPlayers;
       }
       return [];
-    }
+    },
   },
   methods: {
     //TODO: Refactor this mess!
@@ -142,6 +143,12 @@ export default defineComponent({
       this.searchQuery = '';
       const personIndex = this.peopleData.findIndex( person => person.person === 'n/a' );
       this.selectedPerson = this.peopleData[personIndex];
+    },
+    truncateAverageGameLength( avgLength: number ): string {
+      if ( avgLength === 0 ) {
+        return 'n/a';
+      }
+      return ( Math.round( avgLength * Math.pow( 10, 2 ) ) / Math.pow( 10, 2 ) ).toString();
     },
   },
 });
