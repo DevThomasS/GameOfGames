@@ -2,53 +2,52 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: () => import('@/views/dune/MainPage.vue'),
-  },
-  {
-    path: '/dune',
+    path: '/GameOfGames/dune',
     name: 'Dune',
     component: () => import('@/views/dune/MainPage.vue'),
   },
   {
-    path: '/dune-components',
+    path: '/GameOfGames/dune-components',
     name: 'Dune Components',
     component: () => import('@/views/dune/ComponentsPage.vue'),
   },
+  // TODO: Routing out of components after getting here through id doesn't work!
   {
-    // TODO: Focus on component instead of sending to the top of the page.
-    path: '/dune-components/:pathMatch(.*)*',
-    redirect: '/dune-components',
+    path: '/GameOfGames/dune-components/:id',
+    name: 'duneComponentId',
+    component: () => import('@/views/dune/ComponentsPage.vue'),
+    params: true,
   },
   {
-    path: '/dune-rules',
+    path: '/GameOfGames/dune-rules',
     name: 'Dune Rules',
     component: () => import('@/views/dune/RulesPage.vue'),
   },
   {
-    path: '/dune-faq',
+    path: '/GameOfGames/dune-faq',
     name: 'Dune FAQ',
     component: () => import('@/views/dune/FAQPage.vue'),
   },
+  // TODO: Routing out of components after getting here through id doesn't work!
   {
-    // TODO: Focus on component instead of sending to the top of the page.
-    path: '/dune-faq/:pathMatch(.*)*',
-    redirect: '/dune-faq',
+    path: '/GameOfGames/dune-faq/:id',
+    name: 'duneFaqId',
+    component: () => import('@/views/dune/FAQPage.vue'),
+    params: true,
   },
   {
-    path: '/dune-schedule',
+    path: '/GameOfGames/dune-schedule',
     name: 'Dune Schedule',
     component: () => import('@/views/dune/SchedulePage.vue'),
   },
   {
     path: '/:pathMatch(.*)*',
-    redirect: '/',
+    redirect: '/GameOfGames/dune',
   },
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory( process.env.BASE_URL ),
   routes,
 })
 

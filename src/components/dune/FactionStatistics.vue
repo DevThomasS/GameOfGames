@@ -5,7 +5,6 @@
         <v-card :color="faction.color" :class="{ 'choam-card': faction.faction === 'CHOAM' }">
           <div class="faction-content">
             <div class="panel-container">
-              <!-- TODO: Space between words in title for BG & SG. -->
               <v-expansion-panel :title="faction.faction" class="transparent-panel h2-text"
                 @click="faction.loaded ? null : loadFactionData( faction.faction )"
               >

@@ -6,7 +6,9 @@
           <v-col cols="4" v-for="( component, index ) in getColumnComponents( 1 )" :key="index">
             <v-list-item class="item">
               <v-list-item-title>
-                <div class="link p-text" @click="redirectToComponent( component.component_id )"> {{ component.component_name }} </div>
+                <router-link :to="{ name: 'duneComponentId', params: { id: component.component_id } }" class="link p-text">
+                  {{ component.component_name }}
+                </router-link>
               </v-list-item-title>
               <v-list-item-subtitle class="subtitle-text"> {{ component.expansion }} </v-list-item-subtitle>
             </v-list-item>
@@ -14,7 +16,9 @@
           <v-col cols="4" v-for="( component, index ) in getColumnComponents( 2 )" :key="index">
             <v-list-item class="item">
               <v-list-item-title>
-                <div class="link p-text" @click="redirectToComponent( component.component_id )"> {{ component.component_name }} </div>
+                <router-link :to="{ name: 'duneComponentId', params: { id: component.component_id } }" class="link p-text">
+                  {{ component.component_name }}
+                </router-link>
               </v-list-item-title>
               <v-list-item-subtitle class="subtitle-text"> {{ component.expansion }} </v-list-item-subtitle>
             </v-list-item>
@@ -22,7 +26,9 @@
           <v-col cols="4" v-for="( component, index ) in getColumnComponents( 3 )" :key="index">
             <v-list-item class="item">
               <v-list-item-title>
-                <div class="link p-text" @click="redirectToComponent( component.component_id )"> {{ component.component_name }} </div>
+                <router-link :to="{ name: 'duneComponentId', params: { id: component.component_id } }" class="link p-text">
+                  {{ component.component_name }}
+                </router-link>
               </v-list-item-title>
               <v-list-item-subtitle class="subtitle-text"> {{ component.expansion }} </v-list-item-subtitle>
             </v-list-item>
@@ -35,7 +41,6 @@
 
 <script lang="ts">
 import { DuneComponent } from '@/models/models';
-import Router from '@/router/router';
 
 export default {
   data() {
@@ -49,10 +54,6 @@ export default {
       const startIndex = ( columnNumber - 1 ) * componentsPerPage;
       const endIndex = columnNumber * componentsPerPage;
       return this.gameComponents.slice( startIndex, endIndex );
-    },
-    redirectToComponent( componentId: number ): void {
-      const componentLink = `/dune-components/${componentId}`;
-      Router.push( componentLink )
     },
   },
 };

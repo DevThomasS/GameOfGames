@@ -126,6 +126,10 @@ export default class FAQ {
       case Factions.SpacingGuild:
         return [
           new FAQ(
+            'Can I ship into a stronghold that has the Moritani Atomics Aftermath token?',
+            `No - even with your special shipment abilities.`,
+          ),
+          new FAQ(
             'Can I stop the shipment of another player with my one time use faction Karama power after he declares it?',
             `Yes - the troops he would have shipped return to his reserves as they were, and reclaims any spice paid.`,
           ),
@@ -203,6 +207,15 @@ export default class FAQ {
       case Factions.Richese:
         return [
           new FAQ(
+            'If the discard pile is reshuffled, are the discarded Richese Treachery Cards included?',
+            `Yes.`,
+          ),
+          new FAQ(
+            'When is the discard pile reshufffled, notably for Semuta Drug/Nullentropy Box?',
+            `Only when another Treachery Card would be picked up and there is no remaining card in the deck. Note that cards that interact` +
+            ` with the discard pile will have no effect immediately after the discard pile is reshuffled.`,
+          ),
+          new FAQ(
             'How can I use my one time use faction Karama power?',
             `You may use it at any time, even during a battle (except during the use and resolution of the Atreides battle advantage). This` +
             ` could result in the Bene Gesserit battle advantage suddenly having effect if she attempted to force you to play a certain card.`,
@@ -222,6 +235,10 @@ export default class FAQ {
       case Factions.Moritani:
         return [
           new FAQ(
+            'Can the Spacing Guild ship into a stronghold that has your Atomics Aftermath token?',
+            `No - even with his special shipment abilities.`,
+          ),
+          new FAQ(
             'Can I make a deal with my opponent after I play my one time use faction Karama power?',
             `Yes - using your Karama power does not force you to discard any of the treachery cards your opponent used in the battle.` +
             ` However, whether you make a deal or not, you still discard the Karama card and cannot use this power again this game.`,
@@ -231,6 +248,7 @@ export default class FAQ {
         return [];
     }
   }
+  
   public static getCoreFAQ(): FAQ[] {
     return [];
   }

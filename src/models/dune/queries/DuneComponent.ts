@@ -39,7 +39,7 @@ export default class DuneComponent {
       ),
       new DuneComponent( 1,
         Expansions.BaseGame,
-        'Treachery Deck (33)'
+        'Treachery Deck + Karamas (35)'
       ),
       new DuneComponent( 2,
         Expansions.BaseGame,

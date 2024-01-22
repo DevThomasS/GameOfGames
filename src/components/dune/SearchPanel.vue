@@ -109,7 +109,6 @@ export default defineComponent({
   },
   methods: {
     //TODO: Refactor this mess!
-    //TODO: Search for player while a player is already selected does not behave as expected.
     searchPlayer( searchQuery: string ): void {
       const foundPerson = this.peopleData.find( person => person.person === searchQuery );
 

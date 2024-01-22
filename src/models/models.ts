@@ -15,7 +15,7 @@ export { Locations } from './common/constants/Locations';
 export { People } from './common/constants/People';
 export { Expansions } from './dune/constants/Expansions';
 export { Factions } from './dune/constants/Factions';
-export { VictoryTypes } from './dune/constants/VictoryTypes';
+export { VictoryTypes, VictoryTypeList } from './dune/constants/VictoryTypes';
 
 export {
   GameHeaderInfo,

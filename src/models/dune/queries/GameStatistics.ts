@@ -1,4 +1,4 @@
-import { Factions, GameDune, People, VictoryTypes, } from '../../models';
+import { Factions, GameDune, People, VictoryTypeList, } from '../../models';
 
 export default class GameStatistics {
   faction: Factions;
@@ -36,9 +36,6 @@ export default class GameStatistics {
   //////////////////////////////////////////
   //////////    Database Proxy    //////////
   //////////////////////////////////////////
-
-  //TODO: types of victories! Make sure to catch solo/backstab/alliance wins, as well as special victories.
-
   public static getFactionStatistics( totalGames: GameDune[], faction: Factions ): GameStatistics {
     const games = totalGames.filter( game => game.players.find( player => player.faction === faction ) );
     const wins = this.getFactionWins( games, faction );
@@ -94,21 +91,18 @@ export default class GameStatistics {
   }
 
   private static getFactionWins( totalGames: GameDune[], faction: Factions ): GameDune[] {
-    const victories = [ VictoryTypes.Alliance, VictoryTypes.MultiAlliance, VictoryTypes.Solo, VictoryTypes.SpecialFremen, VictoryTypes.SpecialSpacingGuild ];
-    return totalGames.filter( game => game.players.find( player => victories.includes( player.victory_type ) && player.faction === faction ) );
+    return totalGames.filter( game => game.players.find( player => VictoryTypeList.includes( player.victory_type ) && player.faction === faction ) );
   }
 
   private static getFactionDefeats( totalGames: GameDune[], faction: Factions ): GameDune[] {
-    const victories = [ VictoryTypes.Alliance, VictoryTypes.MultiAlliance, VictoryTypes.Solo, VictoryTypes.SpecialFremen, VictoryTypes.SpecialSpacingGuild ];
-    return totalGames.filter( game => game.players.find( player => !victories.includes( player.victory_type ) && player.faction === faction ) );
+    return totalGames.filter( game => game.players.find( player => !VictoryTypeList.includes( player.victory_type ) && player.faction === faction ) );
   }
 
   private static getMaxPerson( games: GameDune[] ): People {
-    const victories = [ VictoryTypes.Alliance, VictoryTypes.MultiAlliance, VictoryTypes.Solo, VictoryTypes.SpecialFremen, VictoryTypes.SpecialSpacingGuild ];
     const prospects = [ { person: People.Unknown, victories: 0 } ];
   
     for ( const game of games ) {
-      const winners = game.players.filter( player => victories.includes( player.victory_type ) );
+      const winners = game.players.filter( player => VictoryTypeList.includes( player.victory_type ) );
 
       for ( const winner of winners ) {
         const existingPerson = prospects.find( (prospect) => prospect.person === winner.person );
@@ -125,11 +119,10 @@ export default class GameStatistics {
   }
 
   private static getMaxFaction( games: GameDune[] ): Factions {
-    const victories = [ VictoryTypes.Alliance, VictoryTypes.MultiAlliance, VictoryTypes.Solo, VictoryTypes.SpecialFremen, VictoryTypes.SpecialSpacingGuild ];
     const prospects = [ { faction: Factions.Unknown, victories: 0 } ];
   
     for ( const game of games ) {
-      const winners = game.players.filter( player => victories.includes( player.victory_type ) );
+      const winners = game.players.filter( player => VictoryTypeList.includes( player.victory_type ) );
 
       for ( const winner of winners ) {
         const existingPerson = prospects.find( (prospect) => prospect.faction === winner.faction );
@@ -146,21 +139,18 @@ export default class GameStatistics {
   }
   
   private static getPersonWins( totalGames: GameDune[], person: People ): GameDune[] {
-    const victories = [ VictoryTypes.Alliance, VictoryTypes.MultiAlliance, VictoryTypes.Solo, VictoryTypes.SpecialFremen, VictoryTypes.SpecialSpacingGuild ];
-    return totalGames.filter( game => game.players.find( player => victories.includes( player.victory_type ) && player.person === person ) );
+    return totalGames.filter( game => game.players.find( player => VictoryTypeList.includes( player.victory_type ) && player.person === person ) );
   }
 
   private static getPersonDefeats( totalGames: GameDune[], person: People ): GameDune[] {
-    const victories = [ VictoryTypes.Alliance, VictoryTypes.MultiAlliance, VictoryTypes.Solo, VictoryTypes.SpecialFremen, VictoryTypes.SpecialSpacingGuild ];
-    return totalGames.filter( game => game.players.find( player => !victories.includes( player.victory_type ) && player.person === person ) );
+    return totalGames.filter( game => game.players.find( player => !VictoryTypeList.includes( player.victory_type ) && player.person === person ) );
   }
 
   private static getSeatRates( games: GameDune[] ): number[] {
-    const victories = [ VictoryTypes.Alliance, VictoryTypes.MultiAlliance, VictoryTypes.Solo, VictoryTypes.SpecialFremen, VictoryTypes.SpecialSpacingGuild ];
     const seatRates = [ 0, 0, 0, 0, 0, 0, ];
   
     for ( const game of games ) {
-      const wonGame = game.players.filter( player => victories.includes( player.victory_type ) );
+      const wonGame = game.players.filter( player => VictoryTypeList.includes( player.victory_type ) );
       
       for ( const victory of wonGame ) {
         seatRates[victory.seat_position - 1]++;

@@ -9,11 +9,6 @@
         <CoreComponents/>
         <TrchComponents/>
         <FctnComponents/>
-        <!-- <WorldComponents/>
-        <IxTlComponents/>
-        <ChRiComponents/>
-        <EcMoComponents/>
-        <UnExComponents/> -->
       </v-row>
     </div>
   </div>
@@ -23,23 +18,13 @@
 import CoreComponents from '@/components/dune/CoreComponents.vue';
 import TrchComponents from '@/components/dune/TrchComponents.vue';
 import FctnComponents from '@/components/dune/FctnComponents.vue';
-// import WorldComponents from '@/components/dune/WorldComponents.vue';
-// import IxTlComponents from '@/components/dune/IxTlComponents.vue';
-// import ChRiComponents from '@/components/dune/ChRiComponents.vue';
-// import EcMoComponents from '@/components/dune/EcMoComponents.vue';
-// import UnExComponents from '@/components/dune/UnExComponents.vue';
-import { defineComponent } from 'vue';
+import { defineComponent, } from 'vue';
 
 export default defineComponent({
   components: {
     CoreComponents,
     TrchComponents,
     FctnComponents,
-    // WorldComponents,
-    // IxTlComponents,
-    // ChRiComponents,
-    // EcMoComponents,
-    // UnExComponents,
   },
 });
 </script>

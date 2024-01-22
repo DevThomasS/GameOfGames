@@ -1,0 +1,1 @@
+import{d as s,_ as o,o as a,b as c,y as t,z as _,h as d}from"./index-f82bfa89.js";const n=s({});const p=e=>(t("data-v-f7ca8233"),e=e(),_(),e),l={class:"default-page"},r=p(()=>d("div",{class:"dune-box"},null,-1)),i=[r];function u(e,f,h,v,m,x){return a(),c("div",l,i)}const g=o(n,[["render",u],["__scopeId","data-v-f7ca8233"]]);export{g as default};

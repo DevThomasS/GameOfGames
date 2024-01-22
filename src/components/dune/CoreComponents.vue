@@ -33,9 +33,9 @@ export default {
           class: 0,
         },
         {
-          title: "Treachery Deck (33)",
+          title: "Treachery Deck (35)",
           subtitle: "Core 33 treachery cards.  Shuffle discarded cards (if any) and replace deck as it runs empty." +
-          " Always included in every game of Dune.",
+          " Always included in every game of Dune.  Two extra Karama cards are optionally included.",
           // image: new URL(`@/assets/dune/core/treachery.png`, import.meta.url ).href,
           image: new URL(`@/assets/dune/core/rule.png`, import.meta.url ).href,
           class: 1,
