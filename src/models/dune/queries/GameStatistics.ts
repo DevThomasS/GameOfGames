@@ -49,7 +49,7 @@ export default class GameStatistics {
       this.getMaxPerson( wins ), // Faction's best player.
       ( games.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( games.length || 1 ),
       this.getMaxPerson( defeats ), // Person who wins against this faction the most.
-      this.getMaxFaction( defeats ),// Faction who wins against this faction the most.
+      this.getMaxFaction( defeats, People.Unknown ),// Faction who wins against this faction the most.
       [],
     );
   }
@@ -68,10 +68,10 @@ export default class GameStatistics {
       person,
       games.length,
       ( wins.length || 0 ) / ( games.length || 1 ),
-      this.getMaxFaction( wins ), // Player's best faction.
+      this.getMaxFaction( wins, person ), // Player's best faction.
       ( games.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( games.length || 1 ),
       this.getMaxPerson( defeats ), // Person who wins against this person the most.
-      this.getMaxFaction( defeats ), // Faction who wins against this person the most.
+      this.getMaxFaction( defeats, People.Unknown ), // Faction who wins against this person the most.
       [],
     );
   }
@@ -82,7 +82,7 @@ export default class GameStatistics {
       People.Unknown,
       totalGames.length,
       0,
-      this.getMaxFaction( totalGames ), // Faction who has won the most.
+      this.getMaxFaction( totalGames, People.Unknown ), // Faction who has won the most.
       ( totalGames.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( totalGames.length || 1 ),
       People.Unknown,
       Factions.Unknown,
@@ -118,14 +118,20 @@ export default class GameStatistics {
     return prospects.reduce( ( acc, person ) => person.victories > acc.victories ? person : acc ).person;
   }
 
-  private static getMaxFaction( games: GameDune[] ): Factions {
+  private static getMaxFaction( games: GameDune[], person: People ): Factions {
     const prospects = [ { faction: Factions.Unknown, victories: 0 } ];
+    let existingPerson = prospects.find( (prospect) => prospect.faction === Factions.Unknown );
+    let winners = [];
   
     for ( const game of games ) {
-      const winners = game.players.filter( player => VictoryTypeList.includes( player.victory_type ) );
+      if ( person === People.Unknown ) {
+        winners = game.players.filter( player => VictoryTypeList.includes( player.victory_type ) );
+      } else {
+        winners = game.players.filter( player => VictoryTypeList.includes( player.victory_type ) && player.person === person );
+      }
 
       for ( const winner of winners ) {
-        const existingPerson = prospects.find( (prospect) => prospect.faction === winner.faction );
+        existingPerson = prospects.find( (prospect) => prospect.faction === winner.faction );
         
         if ( existingPerson ) {
           existingPerson.victories++;
