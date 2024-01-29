@@ -45,7 +45,7 @@ export default class GameDune {
       new GameDune( 0, 10,
         Players.getPlayersByGameId( 0 ),
         // Default Exhibition + All extra Treachery Cards + Alliance Betrayal Cards
-        DuneComponent.getComponentsByQuery( [], [ 4, 11, 15 ] ),
+        DuneComponent.getComponentsByQuery( [], [ 4, 11, 15, ] ),
         8,
         Locations.Chicago
       ),
@@ -61,6 +61,13 @@ export default class GameDune {
         // Default Exhibition + Technology Cards
         DuneComponent.getComponentsByQuery( [], [ 13, ] ),
         9,
+        Locations.Madison
+      ),
+      new GameDune( 3, 10,
+        Players.getPlayersByGameId( 3 ),
+        // Default Exhibition - Faction Leaders
+        DuneComponent.getComponentsByQuery( [ 50, ], [] ),
+        8,
         Locations.Madison
       ),
       // ... Add more games as needed

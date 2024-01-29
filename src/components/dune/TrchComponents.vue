@@ -1,6 +1,6 @@
 <template>
   <v-expansion-panels>
-    <v-expansion-panel title="cORe tReacheRy caRds (33 cards)" class="transparent-panel h2-text">
+    <v-expansion-panel title="default tReacheRy deck (40 cards)" class="transparent-panel h2-text">
       <v-expansion-panel-text>
         <v-row>
           <v-col v-for="( component, index ) in components" :key="index" cols="12" sm="6" md="4" lg="3">

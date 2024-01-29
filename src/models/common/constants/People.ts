@@ -15,6 +15,10 @@ export enum People {
   MeganW = 'Megan W',
   FrScott = 'Father Scott',
   JoeS = 'Joe S',
+  SarahH = `Sarah H`,
+  TylerM = 'Tyler M',
+  RyanH = 'Ryan H',
+  TheresaB = 'Theresa B',
   // ... Add more people as needed
   Unknown = 'n/a',
 }
