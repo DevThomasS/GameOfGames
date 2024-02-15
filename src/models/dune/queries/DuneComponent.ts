@@ -39,7 +39,7 @@ export default class DuneComponent {
       ),
       new DuneComponent( 1,
         Expansions.BaseGame,
-        'Treachery Deck + Karamas (35)'
+        'Treachery Deck (40)'
       ),
       new DuneComponent( 2,
         Expansions.BaseGame,
@@ -95,11 +95,11 @@ export default class DuneComponent {
       ),
       new DuneComponent( 50,
         Expansions.FactionLeaderBetrayalObjective,
-        'Faction Leaders (13)'
+        'Faction Leaders'
       ),
       new DuneComponent( 51,
         Expansions.FactionLeaderBetrayalObjective,
-        'Karama Power Cards (12)'
+        'Karama Power Cards'
       ),
       new DuneComponent( 52,
         Expansions.FactionLeaderBetrayalObjective,
@@ -107,7 +107,7 @@ export default class DuneComponent {
       ),
       new DuneComponent( 53,
         Expansions.FactionLeaderBetrayalObjective,
-        'Objective Cards (9)'
+        'Objective Cards'
       ),
       new DuneComponent( 60,
         Expansions.DoubleSpiceBlowKaramaStop,

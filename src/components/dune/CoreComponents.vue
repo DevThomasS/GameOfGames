@@ -33,9 +33,9 @@ export default {
           class: 0,
         },
         {
-          title: "Treachery Deck (35)",
-          subtitle: "Core 33 treachery cards.  Shuffle discarded cards (if any) and replace deck as it runs empty." +
-          " Always included in every game of Dune.  Two extra Karama cards are optionally included.",
+          title: "Treachery Deck (40)",
+          subtitle: "Core 33 treachery cards + poison & projectile weapon & defense cards + 2 extra Karamas." +
+          " Shuffle discarded cards (if any) and replace deck as it runs empty.",
           // image: new URL(`@/assets/dune/core/treachery.png`, import.meta.url ).href,
           image: new URL(`@/assets/dune/core/rule.png`, import.meta.url ).href,
           class: 1,
@@ -65,21 +65,21 @@ export default {
         },
         {
           title: "Storm Movement rule",
-          subtitle: "Last player in storm order and first player in storm order take hold of the battle wheels." +
-          " Each player independently dials a number from 1 to 3, and reveal their selection simultaneously. Storm then moves the sum." +
-          " Replaced by Storm Deck when Fremen are in play.",
+          subtitle: "Replaced by Storm Deck when Fremen are in play. Last player in storm order and" +
+          " first player in storm order take hold of the battle wheels. Each player independently dials a number from 1 to 3, and reveal" +
+          " their selection simultaneously. Storm then moves the sum.",
           image: new URL(`@/assets/dune/core/rule.png`, import.meta.url ).href,
           class: 0,
         },
         {
-          title: "Shield Wall optional rule",
+          title: "Shield Wall Settlement",
           subtitle: "Shield Wall territory counts as a stronghold for victory purposes after 4 worms have appeared;" +
           " occupancy still treated as rock territory (any number of players can be inside). Normally excluded from every game of Dune.",
           image: new URL(`@/assets/dune/core/rule.png`, import.meta.url ).href,
           class: 2,
         },
         {
-          title: "Advanced Strongholds (6)",
+          title: "Advanced Strongholds",
           subtitle: "Shield Wall territory counts as a stronghold for victory purposes after 4 worms have appeared;" +
           " occupancy still treated as rock territory (any number of players can be inside). Normally excluded from every game of Dune.",
           image: new URL(`@/assets/dune/core/rule.png`, import.meta.url ).href,
