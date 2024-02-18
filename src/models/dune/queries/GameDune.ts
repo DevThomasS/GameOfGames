@@ -70,6 +70,13 @@ export default class GameDune {
         8,
         Locations.Madison
       ),
+      new GameDune( 4, 8,
+        Players.getPlayersByGameId( 4 ),
+        // Default Exhibition - Faction Leaders - Advanced Strongholds
+        DuneComponent.getComponentsByQuery( [ 20, 50, ], [] ),
+        6,
+        Locations.Remote
+      ),
       // ... Add more games as needed
     ];
   }
