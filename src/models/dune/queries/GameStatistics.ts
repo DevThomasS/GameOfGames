@@ -46,9 +46,9 @@ export default class GameStatistics {
       People.Unknown,
       ( games.length || 0 ) / ( totalGames.length || 1 ),
       ( wins.length || 0 ) / ( games.length || 1 ),
-      this.getMaxPerson( wins ), // Faction's best player.
+      this.getMaxPerson( wins, faction ), // Faction's best player.
       ( games.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( games.length || 1 ),
-      this.getMaxPerson( defeats ), // Person who wins against this faction the most.
+      this.getMaxPerson( defeats, faction ), // Person who wins against this faction the most.
       this.getMaxFaction( defeats, People.Unknown ),// Faction who wins against this faction the most.
       [],
     );
@@ -70,7 +70,7 @@ export default class GameStatistics {
       ( wins.length || 0 ) / ( games.length || 1 ),
       this.getMaxFaction( wins, person ), // Player's best faction.
       ( games.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( games.length || 1 ),
-      this.getMaxPerson( defeats ), // Person who wins against this person the most.
+      this.getMaxPerson( defeats, Factions.Unknown ), // Person who wins against this person the most.
       this.getMaxFaction( defeats, People.Unknown ), // Faction who wins against this person the most.
       [],
     );
@@ -79,7 +79,7 @@ export default class GameStatistics {
   private static getUnknownPersonStatistics( totalGames: GameDune[] ): GameStatistics {
     return new GameStatistics(
       Factions.Unknown,
-      People.Unknown,
+      this.getMaxPerson( totalGames, Factions.Unknown ), // Person who has won the most games.
       totalGames.length,
       0,
       this.getMaxFaction( totalGames, People.Unknown ), // Faction who has won the most.
@@ -98,11 +98,13 @@ export default class GameStatistics {
     return totalGames.filter( game => game.players.find( player => !VictoryTypeList.includes( player.victory_type ) && player.faction === faction ) );
   }
 
-  private static getMaxPerson( games: GameDune[] ): People {
+  private static getMaxPerson( games: GameDune[], faction: Factions ): People {
     const prospects = [ { person: People.Unknown, victories: 0 } ];
   
     for ( const game of games ) {
-      const winners = game.players.filter( player => VictoryTypeList.includes( player.victory_type ) );
+      const winners = faction === Factions.Unknown
+        ? game.players.filter( player => VictoryTypeList.includes( player.victory_type ) )
+        : game.players.filter( player => VictoryTypeList.includes( player.victory_type ) && player.faction === faction );
 
       for ( const winner of winners ) {
         const existingPerson = prospects.find( (prospect) => prospect.person === winner.person );

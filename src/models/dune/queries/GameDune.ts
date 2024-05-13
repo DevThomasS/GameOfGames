@@ -77,6 +77,13 @@ export default class GameDune {
         6,
         Locations.Remote
       ),
+      new GameDune( 5, 10,
+        Players.getPlayersByGameId( 5 ),
+        // Default Exhibition - Advanced Strongholds
+        DuneComponent.getComponentsByQuery( [ 20, ], [] ),
+        10,
+        Locations.Madison
+      ),
       // ... Add more games as needed
     ];
   }

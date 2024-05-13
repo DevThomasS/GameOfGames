@@ -46,6 +46,13 @@
           <v-list-item-subtitle class="subtitle-text">Best Faction</v-list-item-subtitle>
         </v-list-item>
 
+        <v-list-item v-if="selectedPerson.person === 'n/a'">
+          <v-list-item-title>
+            <div>{{ selectedPerson.data.person }}</div>
+          </v-list-item-title>
+          <v-list-item-subtitle class="subtitle-text">Best Player</v-list-item-subtitle>
+        </v-list-item>
+
         <v-list-item>
           <v-list-item-title class="truncate-decimal">
             <div> {{  'Turn: ' + truncateAverageGameLength( selectedPerson.data.average_game_length ) }} </div>

@@ -60,6 +60,22 @@ export default class GameNotes {
           'Eight players was not bad! But the saving grace was technology giving another settlement & Jucarutu Sietch.  Perhaps we need to make sure #settlments = #players?' ),
         ]
       ),
+      new GameNotes( 5,
+        [
+        ],
+        [
+          new Notes( 'Karama Cards', Expansions.CHOAMRichese, Alarms.Disruptive,
+          'Two extra Karama cards is too disruptive.' ),
+          new Notes( 'Faction Leaders', Expansions.FactionLeaderBetrayalObjective, Alarms.Disruptive,
+          'Tleilaxu unduly hurt by inclusion; consider allowing Tleilaxu to revive their own.' ),
+          new Notes( 'Homeplanets', Expansions.EcazMoritani, Alarms.Watch,
+          'Homeworlds too harsh and bad feeling to factions that they predominantly nerf (Emperor esp).' ),
+          new Notes( 'Special Treachery Cards', Expansions.IxiansTleilaxu, Alarms.Watch,
+          'We want special cards! Consider reintroducing all but Amal, Poison Blade, & Shield Snooper.' ),
+        ],
+        [
+        ]
+      ),
       // ... Add more notes as needed
     ];
   }
