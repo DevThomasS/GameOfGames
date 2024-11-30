@@ -76,6 +76,20 @@ export default class GameNotes {
         [
         ]
       ),
+      new GameNotes( 6,
+        [
+        ],
+        [
+          new Notes( 'No EcazMoritani', Expansions.EcazMoritani, Alarms.Watch,
+          'No expansion 3 was not notably unenjoyable; and perhaps a little faster. Do people not like planets?' ),
+          new Notes( 'Full Treachery Deck', Expansions.CHOAMRichese, Alarms.Watch,
+          'Including all treachery cards, except expansion 3, was not bad; advise following game 6 note above for default deck.' ),
+          new Notes( 'Atreides Change', Expansions.BaseGame, Alarms.Watch,
+          'Atreides did not appear to suffer from their change and opposition to the change from players used to OG not displeased.' ),
+        ],
+        [
+        ]
+      ),
       // ... Add more notes as needed
     ];
   }
