@@ -5,8 +5,8 @@ export enum People {
   KenS = 'Ken S',
   ThomasS = 'Thomas S',
   TomS = 'Tom S',
-  JackI = 'Jack i',
-  TeddyI = 'Teddy i',
+  JackI = 'Jack I',
+  TeddyI = 'Teddy I',
   ZachH = 'Zach H',
   ZakA = 'Zak Ben A',
   LoganR = 'Logan R',
@@ -22,6 +22,7 @@ export enum People {
   KeatonG = 'Keaton G',
   MatthewN = 'Matthew N',
   FrDiTomo = 'Father DiTomo',
+  DianneS = 'Dianne S',
   // ... Add more people as needed
   Unknown = 'n/a',
 }
