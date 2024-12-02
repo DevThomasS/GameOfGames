@@ -244,12 +244,12 @@ export default class Players {
       new Players( 5, 5,
         People.JackI,
         Factions.Harkonnen,
-        VictoryTypes.TrueSolo,
+        VictoryTypes.Defeat,
       ),
       new Players( 6, 6,
         People.DianneS,
         Factions.Emperor,
-        VictoryTypes.Defeat,
+        VictoryTypes.TrueSolo,
       ),
       // ... Add more players as needed
     ];
