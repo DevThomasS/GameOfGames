@@ -48,7 +48,7 @@ export default class GameStatistics {
       ( wins.length || 0 ) / ( games.length || 1 ),
       this.getMaxPerson( wins, faction ), // Faction's best player.
       ( games.reduce( ( acc, game ) => acc + game.end_turn, 0 ) || 0 ) / ( games.length || 1 ),
-      this.getMaxPerson( defeats, faction ), // Person who wins against this faction the most.
+      this.getMaxPerson( defeats, Factions.Unknown ), // Person who wins against this faction the most.
       this.getMaxFaction( defeats, People.Unknown ),// Faction who wins against this faction the most.
       [],
     );

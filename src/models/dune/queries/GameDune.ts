@@ -91,6 +91,13 @@ export default class GameDune {
         3,
         Locations.Chicago
       ),
+      new GameDune( 7, 10,
+        Players.getPlayersByGameId( 7 ),
+        // Default Exhibition - Advanced Strongholds
+        DuneComponent.getComponentsByQuery( [ 20, ], [] ),
+        10,
+        Locations.Madison
+      ),
       // ... Add more games as needed
     ];
   }

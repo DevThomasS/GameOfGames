@@ -16,7 +16,7 @@ export default class DuneComponent {
   }
 
   public static getDefaultComponents(): DuneComponent[] {
-    return this.getComponentsByIncludedComponents( [ 1, 2, 10, 11, 20, 22, 23, 24, 26, 50, 51, 60, 61, ] );
+    return this.getComponentsByIncludedComponents( [ 1, 2, 4, 10, 12, 22, 23, 25, 26, 50, 51, 62, 100, 101, 102, 103 ] );
   }
 
   public static getComponentsByIncludedComponents( includedComponents: number[] ): DuneComponent[] {
@@ -39,7 +39,7 @@ export default class DuneComponent {
       ),
       new DuneComponent( 1, // Default
         Expansions.BaseGame,
-        'Treachery Deck (40)'
+        'Treachery Deck (33)'
       ),
       new DuneComponent( 2, // Default
         Expansions.BaseGame,
@@ -49,15 +49,19 @@ export default class DuneComponent {
         Expansions.BaseGame,
         'Storm Movement (rule)'
       ),
+      new DuneComponent( 4, // Default
+        Expansions.BaseGame,
+        'Storm Deck'
+      ),
       new DuneComponent( 10, // Default
         Expansions.IxiansTleilaxu,
         'Cheap Hero Traitor Card (1)'
       ),
-      new DuneComponent( 11, // Default
+      new DuneComponent( 11,
         Expansions.IxiansTleilaxu,
         'Sandtrout Spice Card (1)'
       ),
-      new DuneComponent( 12,
+      new DuneComponent( 12, // Default
         Expansions.IxiansTleilaxu,
         'Extra Treachery Cards A (14)'
       ),
@@ -65,7 +69,7 @@ export default class DuneComponent {
         Expansions.IxiansTleilaxu,
         'Technology Tokens (3)'
       ),
-      new DuneComponent( 20, // Default
+      new DuneComponent( 20,
         Expansions.CHOAMRichese,
         'Advanced Stronghold Cards (6)'
       ),
@@ -81,11 +85,11 @@ export default class DuneComponent {
         Expansions.EcazMoritani,
         'Nexus Cards (12)'
       ),
-      new DuneComponent( 24, // Default
+      new DuneComponent( 24,
         Expansions.EcazMoritani,
         'Discovery Tokens (8)'
       ),
-      new DuneComponent( 25,
+      new DuneComponent( 25, // Default
         Expansions.EcazMoritani,
         'Extra Treachery Cards B (3)'
       ),
@@ -109,13 +113,29 @@ export default class DuneComponent {
         Expansions.FactionLeaderBetrayalObjective,
         'Objective Cards'
       ),
-      new DuneComponent( 60, // Default
+      new DuneComponent( 60,
         Expansions.DoubleSpiceBlowKaramaStop,
         'Double Spice Blow Cards (9)'
       ),
-      new DuneComponent( 61, // Default
+      new DuneComponent( 61,
         Expansions.DoubleSpiceBlowKaramaStop,
         'Special Event Spice Cards (6)'
+      ),
+      new DuneComponent( 100, // Default
+        Expansions.HomeBrew,
+        'Atreides Bidding Advantage After Bid'
+      ),
+      new DuneComponent( 101, // Default
+        Expansions.HomeBrew,
+        'Atreides Battle Advantage After Finalization'
+      ),
+      new DuneComponent( 102, // Default
+        Expansions.HomeBrew,
+        'Spice Deck (15b + 4w & Great Maker'
+      ),
+      new DuneComponent( 103, // Default
+        Expansions.HomeBrew,
+        '2-Tier Treachery Deck (50)'
       ),
       // ... Add more components as needed
     ];
