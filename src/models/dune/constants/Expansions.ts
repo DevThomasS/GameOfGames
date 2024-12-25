@@ -6,4 +6,5 @@ export enum Expansions {
   FactionLeaderBetrayalObjective = 'Unofficial 1',
   DoubleSpiceBlowKaramaStop = 'Unofficial 2',
   // ... Add more expansions as needed
+  HomeBrew = 'Homebrew Rules'
 }

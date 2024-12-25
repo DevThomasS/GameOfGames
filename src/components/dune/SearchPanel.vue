@@ -50,7 +50,7 @@
           <v-list-item-title>
             <div>{{ selectedPerson.data.person }}</div>
           </v-list-item-title>
-          <v-list-item-subtitle class="subtitle-text">Best Player</v-list-item-subtitle>
+          <v-list-item-subtitle class="subtitle-text">Champion</v-list-item-subtitle>
         </v-list-item>
 
         <v-list-item>

@@ -91,6 +91,20 @@ export default class GameDune {
         3,
         Locations.Chicago
       ),
+      new GameDune( 7, 10,
+        Players.getPlayersByGameId( 7 ),
+        // Default Exhibition
+        DuneComponent.getComponentsByQuery( [], [] ),
+        10,
+        Locations.Madison
+      ),
+      new GameDune( 8, 4,
+        Players.getPlayersByGameId( 8 ),
+        // Default Exhibition - 
+        DuneComponent.getComponentsByQuery( [ 2, 22, 23, 25, 26, 50, 100, 101, 102, 103, ], [ 0, ] ),
+        4, // TODO
+        Locations.Chicago
+      ),
       // ... Add more games as needed
     ];
   }
