@@ -1,55 +1,66 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# GitHub Pages Deployment Workflow
+name: Deploy to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ['main']
+    branches:
+      - main  # Trigger on push to the main branch
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Manual trigger
   workflow_dispatch:
 
-# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write    # For pushing changes to the repository
+  pages: write       # For deploying to GitHub Pages
+  id-token: write    # Allow access to the ID token for Pages
 
-# Allow one concurrent deployment
 concurrency:
-  group: 'pages'
-  cancel-in-progress: true
+  group: pages
+  cancel-in-progress: true  # Cancel previous deployment if a new one is triggered
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      # Step 1: Checkout code from the repository
+      - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Node
+
+      # Step 2: Set up Node.js environment for building the project
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '18'
           cache: 'npm'
+
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
-      - name: Build
+
+      # Step 4: Build the project
+      - name: Build the project
         run: npm run build
-      - name: List build output
-        run: ls -R ./dist  # Check if the output exists
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-      - name: Wait for artifact upload to complete
+
+      # Step 5: Wait for the build to complete (Optional, but can be useful to debug timing issues)
+      - name: Wait for build to complete
+        run: sleep 10
+
+      # Step 6: Verify build output directory exists and contains the expected files
+      - name: Verify dist directory content
         run: |
-          echo "Waiting for artifact to upload"
-          sleep 5  # Wait 5 seconds for the upload to complete (or longer if needed)
+          ls -R ./dist
+
+      # Step 7: Upload the build artifact to GitHub Pages
+      - name: Upload artifact to GitHub Pages
+        uses: actions/upload-artifact@v3
+        with:
+          path: './dist'  # Ensure the build output path is correct
+          name: 'github-pages'
+
+      # Step 8: Deploy the static content to GitHub Pages
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: github/pages-action@v2
+        with:
+          # The artifact name that was uploaded in the previous step
+          artifact_name: 'github-pages'
