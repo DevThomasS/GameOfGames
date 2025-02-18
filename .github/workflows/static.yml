@@ -21,7 +21,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
@@ -39,13 +38,18 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: List build output
+        run: ls -R ./dist  # Check if the output exists
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist repository
           path: './dist'
+      - name: Wait for artifact upload to complete
+        run: |
+          echo "Waiting for artifact to upload"
+          sleep 5  # Wait 5 seconds for the upload to complete (or longer if needed)
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
