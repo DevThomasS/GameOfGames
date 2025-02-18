@@ -161,7 +161,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/dune.scss";
+@use "@/styles/dune.scss";
 
 .player-card {
   display: flex;

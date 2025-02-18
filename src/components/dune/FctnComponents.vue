@@ -103,7 +103,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/dune.scss";
+@use "@/styles/dune.scss";
 
 .selected-image {
   width: 95vw;

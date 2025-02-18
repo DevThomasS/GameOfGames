@@ -13,6 +13,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/common.scss";
-@import "@/styles/dune.scss";
+@use "@/styles/common.scss";
+@use "@/styles/dune.scss";
 </style>

@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/dune.scss";
+@use "@/styles/dune.scss";
 
 .transparent-panel {
   background-color: rgba( 0, 0, 0, 0 );

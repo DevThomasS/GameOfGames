@@ -105,5 +105,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/dune.scss";
+@use "@/styles/dune.scss";
 </style>
