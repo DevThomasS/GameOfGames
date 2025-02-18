@@ -105,6 +105,13 @@ export default class GameDune {
         4, // TODO
         Locations.Chicago
       ),
+      new GameDune( 9, 10,
+        Players.getPlayersByGameId( 9 ),
+        // Default Exhibition - Planets
+        DuneComponent.getComponentsByQuery( [ 22, ], [] ),
+        7,
+        Locations.Madison
+      ),
       // ... Add more games as needed
     ];
   }
