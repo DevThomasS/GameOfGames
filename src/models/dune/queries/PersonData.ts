@@ -1,16 +1,16 @@
-import { Factions, GameStatistics, People, } from '../../models';
+import { Factions, GameDuneStatistics, People, } from '../../models';
 
 export default class PersonData {
   person: People;
   loaded: boolean;
-  data: GameStatistics;
+  data: GameDuneStatistics;
 
   constructor (
     person: People,
   ) {
     this.person = person;
     this.loaded = false;
-    this.data = new GameStatistics( Factions.Unknown, People.Unknown, 0, 0, People.Unknown, 0, People.Unknown, Factions.Unknown, [] );
+    this.data = new GameDuneStatistics( Factions.Unknown, People.Unknown, 0, 0, People.Unknown, 0, People.Unknown, Factions.Unknown, [] );
   }
 
   //////////////////////////////////////////

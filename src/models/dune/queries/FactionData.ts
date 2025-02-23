@@ -1,11 +1,11 @@
-import { Factions, GameStatistics, People, } from '../../models';
+import { Factions, GameDuneStatistics, People, } from '../../models';
 
 export default class FactionData {
   faction: Factions;
   loaded: boolean;
   color: string;
   image_url: string;
-  data: GameStatistics;
+  data: GameDuneStatistics;
 
   constructor (
     faction: Factions,
@@ -16,7 +16,7 @@ export default class FactionData {
     this.loaded = false;
     this.color = color;
     this.image_url = imageUrl;
-    this.data = new GameStatistics( faction, People.Unknown, 0, 0, People.Unknown, 0, People.Unknown, Factions.Unknown, [] );
+    this.data = new GameDuneStatistics( faction, People.Unknown, 0, 0, People.Unknown, 0, People.Unknown, Factions.Unknown, [] );
   }
 
   //////////////////////////////////////////

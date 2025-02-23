@@ -66,7 +66,7 @@
 </template>
 
 <script lang="ts">
-import { FactionData, Factions, GameDune, GameStatistics, } from '@/models/models';
+import { FactionData, Factions, GameDune, GameDuneStatistics, } from '@/models/models';
 import { defineComponent, } from 'vue';
 
 export default defineComponent({
@@ -81,7 +81,7 @@ export default defineComponent({
       const factionIndex = this.factionData.findIndex( faction => faction.faction === factionName );
 
       if ( factionIndex !== -1 ) {
-        this.factionData[factionIndex].data = GameStatistics.getFactionStatistics( this.allGames, factionName );
+        this.factionData[factionIndex].data = GameDuneStatistics.getFactionStatistics( this.allGames, factionName );
         this.factionData[factionIndex].loaded = true;
       }
     },

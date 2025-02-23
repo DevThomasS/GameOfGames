@@ -1,0 +1,173 @@
+.dune-box {
+  background-color: #2020206c; /* Grey background */
+  border: 2px solid rgba(175, 145, 48, 0.8); /* Faded gold border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Inner padding */
+  min-height: calc(100vh + 100px); /* Adjust to fill the remaining height */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+@font-face {
+  font-family: 'Dune_Rise';
+  src: url('../assets/dune/Dune_Rise.ttf') format('truetype');
+}
+
+.h1-text {
+  font-size: 50px;
+  font-family: 'Dune_Rise';
+  color: rgba(255, 255, 255);
+  text-shadow: 0 0 3px rgb(0, 0, 0),
+  0 0 3px rgba(0, 0, 0),
+  0 0 3px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0);
+  text-align: center;
+}
+
+.h2-text {
+  margin-top: 20px; /* Adjust margin as needed */
+  margin-bottom: 8px; /* Adjust margin as needed */
+  font-size: 30px;
+  font-family: 'Dune_Rise';
+  color: rgba(255, 255, 255);
+  text-shadow: 0 0 3px rgb(0, 0, 0),
+  0 0 3px rgba(0, 0, 0),
+  0 0 3px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0);
+  text-align: center;
+}
+
+$main-font: 'Roboto';
+
+.p-text {
+  font-size: 17px;
+  line-height: 1.3;
+  font-family: $main-font;
+  color: rgba(255, 255, 255);
+  text-shadow: 0 0 2px rgb(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 2px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0),
+  0 0 1px rgba(0, 0, 0);
+}
+
+.subtitle-text {
+  font-size: 15px;
+  font-family: $main-font;
+  font-style: italic;
+  color: rgba(0, 0, 0);
+  text-shadow: 0 0 1px rgb(0, 0, 0, 0.3);
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+
+.faction-content {
+  display: flex;
+}
+
+.panel-container {
+  padding-left: 10px;
+  padding-right: 4px;
+  width: 100%;
+}
+
+.panel-text {
+  padding-top: 5px;
+}
+
+.transparent-panel {
+  background-color: rgba( 0, 0, 0, 0 );
+}
+
+.icon-container {
+  padding: 2px;
+}
+
+.faction-icon {
+  max-height: 100px;
+}
+
+.choam-card {
+  background: linear-gradient( to bottom, rgba( 255, 0, 0, 0.05 ) 50%, rgba( 0, 0, 0, 0.05 ) 50% );
+  box-shadow: inset 0 0 0 9px rgba( 255, 255, 0, 0.1 ), inset 0 0 9px transparent;
+  box-sizing: border-box;
+}
+
+.centered-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dune-divider {
+  color: rgba(175, 145, 48);
+  border-radius: 10px;
+}
+
+.card-with-margin {
+  margin: 8px;
+  height: 100%;
+  max-width: 300px;
+  max-height: 400px;
+}
+
+.excluded {
+  background-color: rgba( 255, 255, 255, 0.05 );
+}
+
+.default {
+  background-color: rgba( 0, 0, 0, 0.25 );
+}
+
+.tournament {
+  background-color: rgba( 255, 0, 0, 0.06 );
+}

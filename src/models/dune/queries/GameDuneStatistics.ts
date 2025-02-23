@@ -1,6 +1,6 @@
 import { Factions, GameDune, People, VictoryTypeList, } from '../../models';
 
-export default class GameStatistics {
+export default class GameDuneStatistics {
   faction: Factions;
   person: People;
   usage_rate: number;
@@ -36,12 +36,12 @@ export default class GameStatistics {
   //////////////////////////////////////////
   //////////    Database Proxy    //////////
   //////////////////////////////////////////
-  public static getFactionStatistics( totalGames: GameDune[], faction: Factions ): GameStatistics {
+  public static getFactionStatistics( totalGames: GameDune[], faction: Factions ): GameDuneStatistics {
     const games = totalGames.filter( game => game.players.find( player => player.faction === faction ) );
     const wins = this.getFactionWins( games, faction );
     const defeats = this.getFactionDefeats( games, faction );
 
-    return new GameStatistics(
+    return new GameDuneStatistics(
       faction,
       People.Unknown,
       ( games.length || 0 ) / ( totalGames.length || 1 ),
@@ -54,7 +54,7 @@ export default class GameStatistics {
     );
   }
 
-  public static getPersonStatistics( totalGames: GameDune[], person: People ): GameStatistics {
+  public static getPersonStatistics( totalGames: GameDune[], person: People ): GameDuneStatistics {
     if ( person === People.Unknown )
     {
       return this.getUnknownPersonStatistics( totalGames );
@@ -63,7 +63,7 @@ export default class GameStatistics {
     const wins = this.getPersonWins( games, person );
     const defeats = this.getPersonDefeats( games, person );
 
-    return new GameStatistics(
+    return new GameDuneStatistics(
       Factions.Unknown,
       person,
       games.length,
@@ -76,8 +76,8 @@ export default class GameStatistics {
     );
   }
 
-  private static getUnknownPersonStatistics( totalGames: GameDune[] ): GameStatistics {
-    return new GameStatistics(
+  private static getUnknownPersonStatistics( totalGames: GameDune[] ): GameDuneStatistics {
+    return new GameDuneStatistics(
       Factions.Unknown,
       this.getMaxPerson( totalGames, Factions.Unknown ), // Person who has won the most games.
       totalGames.length,
