@@ -24,21 +24,9 @@ const routes = [
     component: () => import('@/views/dune/RulesPage.vue'),
   },
   {
-    path: '/GameOfGames/dune-faq',
-    name: 'Dune FAQ',
-    component: () => import('@/views/dune/FAQPage.vue'),
-  },
-  // TODO: Routing out of components after getting here through id doesn't work!
-  {
-    path: '/GameOfGames/dune-faq/:id',
-    name: 'duneFaqId',
-    component: () => import('@/views/dune/FAQPage.vue'),
-    params: true,
-  },
-  {
-    path: '/GameOfGames/dune-schedule',
-    name: 'Dune Schedule',
-    component: () => import('@/views/dune/SchedulePage.vue'),
+    path: '/GameOfGames/war',
+    name: 'War',
+    component: () => import('@/views/war/MainPage.vue'),
   },
   {
     path: '/:pathMatch(.*)*',

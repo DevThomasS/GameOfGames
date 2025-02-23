@@ -6,27 +6,15 @@
       </router-link>
     </div>
 
-    <div class="header-item header-link-b">
-      <router-link :to="selectedGame.route_b">
-        <img :src="selectedGame.image_b" style="max-height: 20px;" class="nav-img">
-      </router-link>
-    </div>
-
     <div class="header-item header-link-main">
       <router-link :to="selectedGame.route_main">
         <img :src="selectedGame.image_main" style="max-height: 75px;" class="nav-img">
       </router-link>
     </div>
 
-    <div class="header-item header-link-c">
-      <router-link :to="selectedGame.route_c">
-        <img :src="selectedGame.image_c" style="max-height: 20px;" class="nav-img">
-      </router-link>
-    </div>
-
-    <div class="header-item header-link-d">
-      <router-link :to="selectedGame.route_d">
-        <img :src="selectedGame.image_d" style="max-height: 20px;" class="nav-img">
+    <div class="header-item header-link-b">
+      <router-link :to="selectedGame.route_b">
+        <img :src="selectedGame.image_b" style="max-height: 20px;" class="nav-img">
       </router-link>
     </div>
   </header>

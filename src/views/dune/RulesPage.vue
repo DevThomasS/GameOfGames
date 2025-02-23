@@ -59,11 +59,28 @@
         facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut
         ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper.
       </p>
+      <br>
+      <v-row class="centered-row">
+        <h1 class="h1-text">
+          FAQ
+        </h1>
+        <v-divider :thickness="6" class="dune-divider"/>
+        <h2 class="h2-text">
+          core rules
+        </h2>
+        <CoreFAQ />
+        <h2 class="h2-text">
+          faction-specific
+        </h2>
+        <FactionFAQ />
+      </v-row>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import CoreFAQ from '@/components/dune/CoreFAQ.vue';
+import FactionFAQ from '@/components/dune/FactionFAQ.vue';
 import DuneComponentPanel from '@/components/dune/DuneComponentPanel.vue';
 import DuneRulesExceptionList from '@/components/dune/DuneRulesExceptionList.vue';
 import { defineComponent } from 'vue';
@@ -72,6 +89,8 @@ export default defineComponent({
   components: {
     DuneComponentPanel,
     DuneRulesExceptionList,
+    CoreFAQ,
+    FactionFAQ,
   },
 });
 </script>

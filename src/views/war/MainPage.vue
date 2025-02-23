@@ -1,38 +1,34 @@
 <template>
   <div class="default-page">
-    <div class="dune-box">
+    <div class="war-box">
       <v-row class="centered-row">
-        <h1 class="h1-text">
-          FAQ
-        </h1>
-        <v-divider :thickness="6" class="dune-divider"/>
         <h2 class="h2-text">
-          core rules
+          Player Standings
         </h2>
-        <CoreFAQ />
+        <SearchPanel />
         <h2 class="h2-text">
-          faction-specific
+          Nation Standings
         </h2>
-        <FactionFAQ />
+        <NationStatistics />
       </v-row>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import CoreFAQ from '@/components/dune/CoreFAQ.vue';
-import FactionFAQ from '@/components/dune/FactionFAQ.vue';
+import NationStatistics from '@/components/war/NationStatistics.vue';
+import SearchPanel from '@/components/war/SearchPanel.vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   components: {
-    CoreFAQ,
-    FactionFAQ,
+    NationStatistics,
+    SearchPanel,
   },
 });
 </script>
 
 <style lang="scss" scoped>
 @use "@/styles/common.scss";
-@use "@/styles/dune.scss";
+@use "@/styles/war.scss";
 </style>

@@ -43,7 +43,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Router from '@/router/router';
+import Router from '@/router';
 
 export default defineComponent({
   methods: {
