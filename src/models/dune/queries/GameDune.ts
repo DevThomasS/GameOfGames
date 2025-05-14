@@ -100,9 +100,9 @@ export default class GameDune {
       ),
       new GameDune( 8, 4,
         Players.getPlayersByGameId( 8 ),
-        // Default Exhibition - 
+        // Default Exhibition - TODO ABOVE - default exhibitions need to be redone after refactor
         DuneComponent.getComponentsByQuery( [ 2, 22, 23, 25, 26, 50, 100, 101, 102, 103, ], [ 0, ] ),
-        4, // TODO
+        4,
         Locations.Chicago
       ),
       new GameDune( 9, 10,
@@ -110,6 +110,13 @@ export default class GameDune {
         // Default Exhibition - Planets
         DuneComponent.getComponentsByQuery( [ 22, ], [] ),
         7,
+        Locations.Madison
+      ),
+      new GameDune( 10, 4,
+        Players.getPlayersByGameId( 10 ),
+        // Default Exhibition - Planets
+        DuneComponent.getComponentsByQuery( [], [] ),
+        3,
         Locations.Madison
       ),
       // ... Add more games as needed

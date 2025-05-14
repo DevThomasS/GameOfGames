@@ -11,6 +11,7 @@ export enum VictoryTypes {
   SpecialFremen = 'Fremen Special',
   SpecialSpacingGuild = 'Spacing Guild Special',
   TrueSolo = 'True Solo',
+  PerfectSolo = 'Perfect Solo', // Zero casualties - Michael S, 5/3/25
 }
 
 export const VictoryTypeList: VictoryTypes[] = [
@@ -22,4 +23,5 @@ export const VictoryTypeList: VictoryTypes[] = [
   VictoryTypes.SpecialFremen,
   VictoryTypes.SpecialSpacingGuild,
   VictoryTypes.TrueSolo,
+  VictoryTypes.PerfectSolo,
 ];
