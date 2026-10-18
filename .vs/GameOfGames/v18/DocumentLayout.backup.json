@@ -1,0 +1,205 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\DuneComponent.ts||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\models\\dune\\queries\\DuneComponent.ts||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\common\\constants\\People.ts||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\models\\common\\constants\\People.ts||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\Players.ts||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\models\\dune\\queries\\Players.ts||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\common\\constants\\VictoryTypes.ts||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\models\\common\\constants\\VictoryTypes.ts||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\GameDune.ts||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\models\\dune\\queries\\GameDune.ts||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\GameDuneStatistics.ts||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\models\\dune\\queries\\GameDuneStatistics.ts||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\GameNotes.ts||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\models\\dune\\queries\\GameNotes.ts||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-10-18T02:50:43.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\index.html",
+              "RelativeDocumentMoniker": "index.html",
+              "ToolTip": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\index.html",
+              "RelativeToolTip": "index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-10-18T02:50:35.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VictoryTypes.ts",
+              "DocumentMoniker": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\common\\constants\\VictoryTypes.ts",
+              "RelativeDocumentMoniker": "src\\models\\common\\constants\\VictoryTypes.ts",
+              "ToolTip": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\common\\constants\\VictoryTypes.ts",
+              "RelativeToolTip": "src\\models\\common\\constants\\VictoryTypes.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-10-18T02:45:21.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d3750d8a-574b-4fb3-b7e2-aa8af40e8231}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DuneComponent.ts",
+              "DocumentMoniker": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\DuneComponent.ts",
+              "RelativeDocumentMoniker": "src\\models\\dune\\queries\\DuneComponent.ts",
+              "ToolTip": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\DuneComponent.ts",
+              "RelativeToolTip": "src\\models\\dune\\queries\\DuneComponent.ts",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAHIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-10-18T02:40:16.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "People.ts",
+              "DocumentMoniker": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\common\\constants\\People.ts",
+              "RelativeDocumentMoniker": "src\\models\\common\\constants\\People.ts",
+              "ToolTip": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\common\\constants\\People.ts",
+              "RelativeToolTip": "src\\models\\common\\constants\\People.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-10-18T02:39:08.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Players.ts",
+              "DocumentMoniker": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\Players.ts",
+              "RelativeDocumentMoniker": "src\\models\\dune\\queries\\Players.ts",
+              "ToolTip": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\Players.ts",
+              "RelativeToolTip": "src\\models\\dune\\queries\\Players.ts",
+              "ViewState": "AgIAAGQBAAAAAAAAAAAiwJABAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-10-18T02:39:01.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GameNotes.ts",
+              "DocumentMoniker": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\GameNotes.ts",
+              "RelativeDocumentMoniker": "src\\models\\dune\\queries\\GameNotes.ts",
+              "ToolTip": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\GameNotes.ts",
+              "RelativeToolTip": "src\\models\\dune\\queries\\GameNotes.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-10-18T02:37:19.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GameDuneStatistics.ts",
+              "DocumentMoniker": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\GameDuneStatistics.ts",
+              "RelativeDocumentMoniker": "src\\models\\dune\\queries\\GameDuneStatistics.ts",
+              "ToolTip": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\GameDuneStatistics.ts",
+              "RelativeToolTip": "src\\models\\dune\\queries\\GameDuneStatistics.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-10-18T02:37:08.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GameDune.ts",
+              "DocumentMoniker": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\GameDune.ts",
+              "RelativeDocumentMoniker": "src\\models\\dune\\queries\\GameDune.ts",
+              "ToolTip": "C:\\Users\\tsfre\\source\\repos\\DevThomasS\\GameOfGames\\src\\models\\dune\\queries\\GameDune.ts",
+              "RelativeToolTip": "src\\models\\dune\\queries\\GameDune.ts",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAiwHMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-10-18T02:35:22.784Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

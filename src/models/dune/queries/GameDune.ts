@@ -112,7 +112,29 @@ export default class GameDune {
         7,
         Locations.Madison
       ),
+      new GameDune( 10, 3,
+        Players.getPlayersByGameId( 10 ),
+        // Default Exhibition + Technology Tokens
+        DuneComponent.getComponentsByQuery( [], [ 13, ] ),
+        3,
+        Locations.Madison
+      ),
+      new GameDune( 11, 3,
+        Players.getPlayersByGameId( 11 ),
+        // Default Exhibition - Faction Leaders
+        DuneComponent.getComponentsByQuery( [ 50, ], [] ),
+        3,
+        Locations.Madison
+      ),
       // ... Add more games as needed
+      // CORRECTIONS - GAMES LOST TO TIME, BUT PLAYER DATA TO BE RECORDED
+      new GameDune( 100, 100,
+        Players.getPlayersByGameId( 100 ),
+        // Default Exhibition ???
+        DuneComponent.getComponentsByQuery( [], [] ),
+        3,
+        Locations.Madison
+      ),
     ];
   }
 }

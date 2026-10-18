@@ -131,7 +131,7 @@ export default class DuneComponent {
       ),
       new DuneComponent( 102, // Default
         Expansions.HomeBrew,
-        'Spice Deck (15b + 4w & Great Maker'
+        'Spice Deck (15b + 4w & Great Maker)'
       ),
       new DuneComponent( 103, // Default
         Expansions.HomeBrew,

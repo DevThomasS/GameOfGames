@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\assets\\dune",
+    "\\src\\components\\dune",
+    "\\src\\models",
+    "\\src\\models\\common",
+    "\\src\\models\\common\\constants",
+    "\\src\\models\\common\\queries"
+  ],
+  "SelectedNode": "\\src\\models\\common\\constants\\VictoryTypes.ts",
+  "PreviewInSolutionExplorer": false
+}
