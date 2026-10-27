@@ -14,8 +14,9 @@ function Invoke-DuneSpice {
     param([Alias('d')][switch]$DoubleSpice)
 
     if ($DoubleSpice) {
-        $deckA = 10
-        $deckB = 10
+        # 13 territories and 5 worms AFTER Turn 1 spice blows mixed into 2 sub decks
+        $deckA = 9
+        $deckB = 9
         $totalWorms = 5
         $cardsDrawnPerTurn = 2
         $mode = 'Double-spice variant: 2 decks (1 draw from each); 15 territory cards + 5 worms'
@@ -49,25 +50,104 @@ function Invoke-DuneSpice {
     $deckA--
     $turn++
     if ($DoubleSpice){
-        # TODO: Implement deckA & deckB for double-spice variant (1 draw from each pile).
-    }
+        # Calculating the odds exactly is way too complicated (we would have to average over every starting deck
+        # configuration AND every reshuffle). So we simulate the decks card by card and count what happens.
+        # The table is conditional on NO worm on an earlier turn, so each simulated game stops after the turn
+        # of its first worm.
+        $simulations = 20000
+        $lastTurn = 10
 
-    while ($turn -lt 11) {
-        # Given no worm has appeared, every card removed so far was territory.
-        if ($DoubleSpice) {
-            # TODO: Implement exact odds for double-spice variant (1 draw from each pile). This is BROKEN right now
-            # Approximation: treat the 20 cards as one combined pool and draw
-            # two without replacement. The exact two-pile odds need each pile's
-            # individual worm/territory composition.
-            # $pNoWormThisTurn = ($remainingTerritory / $remainingCards) *
-            #                    (($remainingTerritory - 1) / ($remainingCards - 1))
-            # $pAnyThisTurn = 1 - $pNoWormThisTurn
-            # $cumulativeNoWorm *= $pNoWormThisTurn
-            # $pByThisTurn = 1 - $cumulativeNoWorm
-            # $remainingCards -= 2
-            # $remainingTerritory -= 2
+        $gamesReachingTurn = @(0) * ($lastTurn + 1)   # games with no worm on any earlier turn
+        $firstWormOnTurn   = @(0) * ($lastTurn + 1)   # of those, games whose first worm came on this turn
+        $wormsDrawnOnTurn  = @(0) * ($lastTurn + 1)   # worms drawn this turn, summed over games reaching this turn
+
+        # Cards are 'T' (territory) or 'W' (worm). Cards are drawn from the END of a deck's list.
+        # Each deck has its own discard pile, in the order the cards were discarded.
+        $decks    = @{ A = [System.Collections.Generic.List[string]]::new(); B = [System.Collections.Generic.List[string]]::new() }
+        $discards = @{ A = [System.Collections.Generic.List[string]]::new(); B = [System.Collections.Generic.List[string]]::new() }
+
+        function Set-DuneDecks {
+            # Shuffle the cards and deal them into the two decks as evenly as possible (deck A gets the extra card if odd)
+            param($Cards, $DeckA, $DeckB)
+            $shuffled = @($Cards | Get-Random -Count @($Cards).Count)
+            $sizeA = [int][math]::Ceiling($shuffled.Count / 2)
+            $DeckA.Clear()
+            $DeckB.Clear()
+            $DeckA.AddRange([string[]]($shuffled[0..($sizeA - 1)]))
+            $DeckB.AddRange([string[]]($shuffled[$sizeA..($shuffled.Count - 1)]))
         }
-        else {
+
+        function Invoke-DuneReshuffle {
+            # Pool = whatever is left in either deck + every discarded card EXCEPT, in each discard pile, the most
+            # recent territory card and any worms drawn after it. Pool is shuffled and dealt into two new decks.
+            param($DeckA, $DeckB, $DiscardA, $DiscardB)
+            $pool = [System.Collections.Generic.List[string]]::new()
+            $pool.AddRange($DeckA)
+            $pool.AddRange($DeckB)
+            foreach ($discard in $DiscardA, $DiscardB) {
+                $lastTerritory = $discard.LastIndexOf('T')
+                if ($lastTerritory -gt 0) {
+                    $pool.AddRange($discard.GetRange(0, $lastTerritory))
+                    $discard.RemoveRange(0, $lastTerritory)
+                }
+            }
+            Set-DuneDecks -Cards $pool -DeckA $DeckA -DeckB $DeckB
+        }
+
+        # After Turn 1 (one territory drawn from each deck): all worms + the remaining territories are shuffled into 2 decks
+        $startingCards = @('T') * ($territoryCards - 2) + @('W') * $totalWorms
+
+        for ($game = 0; $game -lt $simulations; $game++) {
+            Set-DuneDecks -Cards $startingCards -DeckA $decks['A'] -DeckB $decks['B']
+            # Turn 1's two territories are the only cards in the discard piles
+            $discards['A'].Clear(); $discards['A'].Add('T')
+            $discards['B'].Clear(); $discards['B'].Add('T')
+
+            for ($turn = 2; $turn -le $lastTurn; $turn++) {
+                $gamesReachingTurn[$turn]++
+                $wormsThisTurn = 0
+
+                # Draw from deck A, then deck B. If a worm is drawn, keep drawing from that same deck until a territory appears.
+                foreach ($side in 'A', 'B') {
+                    $deck = $decks[$side]
+                    do {
+                        $card = $deck[$deck.Count - 1]
+                        $deck.RemoveAt($deck.Count - 1)
+                        $discards[$side].Add($card)
+                        if ($card -eq 'W') { $wormsThisTurn++ }
+
+                        # Reshuffle ONLY right after the last card of a deck has been drawn (the card just drawn
+                        # is already in the discard pile, so a territory drawn this turn is kept out of the shuffle)
+                        if ($deck.Count -eq 0) {
+                            Invoke-DuneReshuffle -DeckA $decks['A'] -DeckB $decks['B'] -DiscardA $discards['A'] -DiscardB $discards['B']
+                        }
+                    } while ($card -eq 'W')
+                }
+
+                $wormsDrawnOnTurn[$turn] += $wormsThisTurn
+                if ($wormsThisTurn -gt 0) {
+                    $firstWormOnTurn[$turn]++
+                    break   # first worm of this game; later turns don't matter for the table
+                }
+            }
+        }
+
+        $cumulativeFirstWorm = 0
+        for ($turn = 2; $turn -le $lastTurn; $turn++) {
+            $cumulativeFirstWorm += $firstWormOnTurn[$turn]
+            $reached = $gamesReachingTurn[$turn]
+            $pAnyThisTurn = 0
+            $expectedWormsThisTurn = 0
+            if ($reached -gt 0) {
+                $pAnyThisTurn = $firstWormOnTurn[$turn] / $reached
+                $expectedWormsThisTurn = $wormsDrawnOnTurn[$turn] / $reached
+            }
+            $pByThisTurn = $cumulativeFirstWorm / $simulations
+            Write-Host ('{0,5}    {1,34:P2}    {2,31:P2}    {3,28:F3}' -f $turn, $pAnyThisTurn, $pByThisTurn, $expectedWormsThisTurn)
+        }
+    }
+    else {
+        while ($turn -lt 11) {
             # Draw 1 from deck & assume no worm is ever drawn (except for 4th column, which is the expected # of worms drawn on this turn IF first worm in game is drawn now)
             $pAnyThisTurn = $totalWorms / $deckA
             $cumulativeNoWorm *= (1 - $pAnyThisTurn)
@@ -87,10 +167,10 @@ function Invoke-DuneSpice {
                 $tempWorms--
                 $tempDeck--
             }
-        }
 
-        Write-Host ('{0,5}    {1,34:P2}    {2,31:P2}    {3,28:F3}' -f $turn, $pAnyThisTurn, $pByThisTurn, $expectedWormsThisTurn)
-        $turn++
+            Write-Host ('{0,5}    {1,34:P2}    {2,31:P2}    {3,28:F3}' -f $turn, $pAnyThisTurn, $pByThisTurn, $expectedWormsThisTurn)
+            $turn++
+        }
     }
 
     Write-Host ''
