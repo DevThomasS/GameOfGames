@@ -14,6 +14,8 @@
 #     scenario = [label=]s|d:worms:territories   (s = single deck, d = double spice)
 #     worms and territories can be a range: d:3-6:15-17 means every combination
 #     separate scenarios with commas (no spaces); -Csv saves a spreadsheet-ready file
+#   Per-game rows: worms drawn, turns with at least 1 worm, turns with more than 1 worm,
+#   mean turn of first worm, and the share of games with no worm.
 #
 # Worms/territories are the totals in the deck(s) at the START of the game (before Turn 1's draw).
 #
@@ -84,6 +86,7 @@ function Invoke-DuneSimulation {
     $startingCards = @('T') * ($Territories - $DeckCount) + @('W') * $Worms
 
     $gamesWithWormOnTurn = @(0) * ($LastTurn + 1)   # games where at least 1 worm was drawn on this turn
+    $gamesWithMultiWormOnTurn = @(0) * ($LastTurn + 1)   # games where MORE than 1 worm was drawn on this turn
     $firstWormOnTurn     = @(0) * ($LastTurn + 1)   # games where this turn had the game's first worm
     $wormsDrawnOnTurn    = @(0) * ($LastTurn + 1)   # worms drawn this turn, summed over all games
     $firstWormTurnSum = 0
@@ -122,6 +125,9 @@ function Invoke-DuneSimulation {
             }
 
             $wormsDrawnOnTurn[$turn] += $wormsThisTurn
+            if ($wormsThisTurn -gt 1) {
+                $gamesWithMultiWormOnTurn[$turn]++
+            }
             if ($wormsThisTurn -gt 0) {
                 $gamesWithWormOnTurn[$turn]++
                 if (-not $wormSeen) {
@@ -138,10 +144,12 @@ function Invoke-DuneSimulation {
 
     $avgWormsByTurn = @(0.0) * ($LastTurn + 1)
     $pWormByTurn    = @(0.0) * ($LastTurn + 1)
+    $pMultiWormByTurn = @(0.0) * ($LastTurn + 1)
     $gamesWithWorm = 0
     for ($turn = 2; $turn -le $LastTurn; $turn++) {
         $avgWormsByTurn[$turn] = $wormsDrawnOnTurn[$turn] / $Games
         $pWormByTurn[$turn]    = $gamesWithWormOnTurn[$turn] / $Games
+        $pMultiWormByTurn[$turn] = $gamesWithMultiWormOnTurn[$turn] / $Games
         $gamesWithWorm += $firstWormOnTurn[$turn]
     }
 
@@ -155,6 +163,8 @@ function Invoke-DuneSimulation {
         FirstWormOnTurn   = $firstWormOnTurn     # number of games whose first worm came on each turn
         AvgTotalWorms     = ($avgWormsByTurn | Measure-Object -Sum).Sum   # worms per game, turns 2..last
         AvgTurnsWithWorm  = ($pWormByTurn | Measure-Object -Sum).Sum      # turns with any worm per game
+        PMultiWormByTurn  = $pMultiWormByTurn    # chance of MORE than 1 worm on each turn
+        AvgTurnsWithMultiWorm = ($pMultiWormByTurn | Measure-Object -Sum).Sum   # turns with more than 1 worm per game
         MeanFirstWormTurn = $meanFirstWormTurn   # among games that had a worm
         PNoWorm           = 1 - ($gamesWithWorm / $Games)
     }
@@ -259,10 +269,12 @@ function Invoke-DuneCompare {
     Write-DuneCompareRow -RowLabel '' -Cells $labels -Widths $widths
     $cellsWorms = @($results | ForEach-Object { '{0:F2}' -f $_.AvgTotalWorms })
     $cellsTurns = @($results | ForEach-Object { '{0:F2}' -f $_.AvgTurnsWithWorm })
+    $cellsMulti = @($results | ForEach-Object { '{0:F2}' -f $_.AvgTurnsWithMultiWorm })
     $cellsFirst = @($results | ForEach-Object { if ($null -eq $_.MeanFirstWormTurn) { 'n/a' } else { '{0:F2}' -f $_.MeanFirstWormTurn } })
     $cellsNone  = @($results | ForEach-Object { '{0:P1}' -f $_.PNoWorm })
     Write-DuneCompareRow -RowLabel 'Worms drawn' -Cells $cellsWorms -Widths $widths
     Write-DuneCompareRow -RowLabel 'Turns with at least one worm' -Cells $cellsTurns -Widths $widths
+    Write-DuneCompareRow -RowLabel 'Turns with more than 1 worm' -Cells $cellsMulti -Widths $widths
     Write-DuneCompareRow -RowLabel 'Mean turn of first worm' -Cells $cellsFirst -Widths $widths
     Write-DuneCompareRow -RowLabel 'Games with no worm' -Cells $cellsNone -Widths $widths
     Write-Host ''
@@ -293,6 +305,7 @@ function Invoke-DuneCompare {
         }
         Add-DuneCsvRow -RowLabel "Worms drawn per game (turns 2-$LastTurn)" -Values @($results | ForEach-Object { [math]::Round($_.AvgTotalWorms, 4) })
         Add-DuneCsvRow -RowLabel 'Turns with at least one worm per game' -Values @($results | ForEach-Object { [math]::Round($_.AvgTurnsWithWorm, 4) })
+        Add-DuneCsvRow -RowLabel 'Turns with more than 1 worm per game' -Values @($results | ForEach-Object { [math]::Round($_.AvgTurnsWithMultiWorm, 4) })
         Add-DuneCsvRow -RowLabel 'Mean turn of first worm' -Values @($results | ForEach-Object { if ($null -eq $_.MeanFirstWormTurn) { '' } else { [math]::Round($_.MeanFirstWormTurn, 4) } })
         Add-DuneCsvRow -RowLabel 'Games with no worm (%)' -Values @($results | ForEach-Object { [math]::Round(100 * $_.PNoWorm, 3) })
 
