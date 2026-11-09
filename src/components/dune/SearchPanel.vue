@@ -87,6 +87,7 @@
 
 <script lang="ts">
 import { GameDune, GameDuneStatistics, PersonData, People, } from '@/models/models';
+import { truncateAverageGameLength } from '@/utils/formatters';
 import { defineComponent, } from 'vue';
 
 export default defineComponent({
@@ -151,10 +152,7 @@ export default defineComponent({
       this.selectedPerson = this.peopleData[personIndex];
     },
     truncateAverageGameLength( avgLength: number ): string {
-      if ( avgLength === 0 ) {
-        return 'n/a';
-      }
-      return ( Math.round( avgLength * Math.pow( 10, 2 ) ) / Math.pow( 10, 2 ) ).toString();
+      return truncateAverageGameLength( avgLength );
     },
   },
 });

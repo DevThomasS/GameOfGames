@@ -1,22 +1,31 @@
 <template>
   <header class="sticky-header" :key="selectedGame.route_main">
-    <div class="header-item header-link-a">
-      <router-link :to="selectedGame.route_a">
-        <img :src="selectedGame.image_a" style="max-height: 20px;" class="nav-img">
-      </router-link>
-    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <v-container fluid class="header-container">
+        <v-row align="center" class="header-row">
+          <!-- Left Logo -->
+          <v-col cols="12" sm="3" class="header-item header-link-a">
+            <router-link :to="selectedGame.route_a" :aria-label="`Navigate to ${selectedGame.name} option A`">
+              <img :src="selectedGame.image_a" :alt="`${selectedGame.name} option A logo`" class="nav-img">
+            </router-link>
+          </v-col>
 
-    <div class="header-item header-link-main">
-      <router-link :to="selectedGame.route_main">
-        <img :src="selectedGame.image_main" style="max-height: 75px;" class="nav-img">
-      </router-link>
-    </div>
+          <!-- Center Logo -->
+          <v-col cols="12" sm="6" class="header-item header-link-main">
+            <router-link :to="selectedGame.route_main" :aria-label="`Navigate to ${selectedGame.name} main page`">
+              <img :src="selectedGame.image_main" :alt="`${selectedGame.name} main logo`" class="nav-img nav-img-main">
+            </router-link>
+          </v-col>
 
-    <div class="header-item header-link-b">
-      <router-link :to="selectedGame.route_b">
-        <img :src="selectedGame.image_b" style="max-height: 20px;" class="nav-img">
-      </router-link>
-    </div>
+          <!-- Right Logo -->
+          <v-col cols="12" sm="3" class="header-item header-link-b">
+            <router-link :to="selectedGame.route_b" :aria-label="`Navigate to ${selectedGame.name} option B`">
+              <img :src="selectedGame.image_b" :alt="`${selectedGame.name} option B logo`" class="nav-img">
+            </router-link>
+          </v-col>
+        </v-row>
+      </v-container>
+    </nav>
   </header>
 </template>
 
@@ -59,51 +68,92 @@ export default {
 <!-- Intentionally not scoped style. This is to keep the main content of page and header in desired format. -->
 <style lang="scss">
 .sticky-header {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  top: 10px;
+  position: sticky;
+  top: 0;
   width: 100%;
   z-index: 1000;
+  background: linear-gradient(rgba(237, 225, 186, 0.95), rgba(160, 84, 14, 0.2));
+  padding: 10px 0;
+}
+
+.header-nav {
+  width: 100%;
+}
+
+.header-container {
+  padding: 0 16px;
+  max-width: 100%;
+}
+
+.header-row {
+  margin: 0 !important;
 }
 
 /* Styles for each header item */
 .header-item {
-  height: 100%; /* Sets the height of each header item to 100% of the header */
-  display: flex; /* Displays the image inline */
-  justify-content: center; /* Centers the image horizontally */
-  align-items: baseline; /* Aligns the image vertically */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 100%;
+  }
 }
 
 /* Add transform for hover effect */
 .nav-img {
-  transition: transform; /* Smooth transition effect */
+  max-height: 20px;
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(175, 145, 48, 0.8);
+    outline-offset: 4px;
+  }
 }
 
-.nav-img:hover {
-  opacity: 0.8; /* Adjust the opacity as desired */
-  transform: translateY( 1px ); /* Adjust the transformation as needed */
+.nav-img-main {
+  max-height: 75px;
+
+  @media (max-width: 600px) {
+    max-height: 50px;
+  }
+
+  @media (max-width: 480px) {
+    max-height: 40px;
+  }
 }
 
 .header-link-a {
-  width: 19%;
+  @media (max-width: 600px) {
+    margin-bottom: 8px;
+  }
 }
 
 .header-link-b {
-  width: 16%;
+  @media (max-width: 600px) {
+    margin-bottom: 8px;
+  }
 }
 
 .header-link-main {
-  width: 30%;
-  position: relative; /* Necessary for absolute positioning of the dropdown */
-}
+  position: relative;
 
-.header-link-c {
-  width: 16%;
-}
-
-.header-link-d {
-  width: 19%;
+  @media (max-width: 600px) {
+    margin-bottom: 8px;
+  }
 }
 
 .scrolling-bg {
@@ -113,12 +163,40 @@ export default {
 
 .router-view-container {
   width: 100%;
-  max-width: 1200px; /* Adjust max-width as needed */
-  margin-top: 20px; /* Adjust top margin as needed */
-  padding-top: 100px; /* Adjust top padding to match header height */
+  max-width: 1200px;
+  margin-top: 20px;
+  padding: 20px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  box-sizing: border-box;
+
+  @media (max-width: 1200px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    padding: 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sticky-header {
+    padding: 8px 0;
+  }
+
+  .header-container {
+    padding: 0 8px;
+  }
+
+  .header-item {
+    padding: 4px;
+  }
 }
 </style>

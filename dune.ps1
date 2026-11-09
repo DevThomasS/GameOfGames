@@ -7,6 +7,8 @@
 #   dune spice 6 15                 worms, then territories (works with -d too)
 #   dune spice -w 6 -t 15 -d        same thing, by name
 #   dune spice -d -n 50000          games simulated for -d (default 10000)
+#   add -i to ignore the first worm TURN of each game for the first-worm statistics: no Nexus that turn,
+#     however many worms it had (they still appear and count everywhere else)
 #
 # Compare game styles side by side (simulated full games, identical rules for every column):
 #   dune spice -Compare s:6:15,d:5:15,d:4:15,d:5:16
@@ -68,6 +70,7 @@ function Invoke-DuneSimulation {
         [ValidateSet(1, 2)][int]$DeckCount,
         [int]$Games,
         [int]$LastTurn = 10,
+        [bool]$IgnoreFirstWormTurn = $false,
         [string]$ProgressLabel = ''
     )
 
@@ -103,7 +106,8 @@ function Invoke-DuneSimulation {
             $discards[$side].Add('T')
         }
 
-        $wormSeen = $false   # has a worm already been drawn on an earlier turn of this game?
+        $wormSeen = $false   # has a worm already triggered the first-worm statistics in this game?
+        $wormTurnsToIgnore = if ($IgnoreFirstWormTurn) { 1 } else { 0 }   # per game: worm turns still to ignore for those statistics
         for ($turn = 2; $turn -le $LastTurn; $turn++) {
             $wormsThisTurn = 0
 
@@ -130,11 +134,20 @@ function Invoke-DuneSimulation {
             }
             if ($wormsThisTurn -gt 0) {
                 $gamesWithWormOnTurn[$turn]++
-                if (-not $wormSeen) {
-                    $firstWormOnTurn[$turn]++
-                    $firstWormTurnSum += $turn
-                    $wormSeen = $true
-                }
+            }
+
+            # With IgnoreFirstWormTurn, the first turn of the game that has any worms still has them appear (they
+            # count in every row above) but that turn's Nexus is ignored, so however many worms it had (1, 3, ...)
+            # it doesn't count as "the first worm turn" in the first-worm statistics.
+            $nexusTurn = ($wormsThisTurn -gt 0)
+            if ($nexusTurn -and ($wormTurnsToIgnore -gt 0)) {
+                $nexusTurn = $false
+                $wormTurnsToIgnore = 0
+            }
+            if ($nexusTurn -and (-not $wormSeen)) {
+                $firstWormOnTurn[$turn]++
+                $firstWormTurnSum += $turn
+                $wormSeen = $true
             }
         }
     }
@@ -172,7 +185,7 @@ function Invoke-DuneSimulation {
 
 function Write-DuneCompareRow {
     param($RowLabel, $Cells, $Widths)
-    $line = ([string]$RowLabel).PadRight(30)
+    $line = ([string]$RowLabel).PadRight(38)
     for ($i = 0; $i -lt $Cells.Count; $i++) {
         $line += '  ' + ([string]$Cells[$i]).PadLeft($Widths[$i])
     }
@@ -184,7 +197,8 @@ function Invoke-DuneCompare {
         [string[]]$Scenarios,
         [int]$Games = 10000,
         [string]$CsvPath,
-        [int]$LastTurn = 10
+        [int]$LastTurn = 10,
+        [bool]$IgnoreFirstWormTurn = $false
     )
 
     # --- Turn the scenario strings into a list of scenarios -------------------------------------
@@ -247,13 +261,20 @@ function Invoke-DuneCompare {
     $done = 0
     foreach ($p in $plan) {
         $done++
-        $r = Invoke-DuneSimulation -Territories $p.Territories -Worms $p.Worms -DeckCount $p.DeckCount -Games $Games -LastTurn $LastTurn -ProgressLabel "$($p.Label)  ($done of $($plan.Count))"
+        $r = Invoke-DuneSimulation -Territories $p.Territories -Worms $p.Worms -DeckCount $p.DeckCount -Games $Games -LastTurn $LastTurn -IgnoreFirstWormTurn $IgnoreFirstWormTurn -ProgressLabel "$($p.Label)  ($done of $($plan.Count))"
         $results.Add($r)
     }
 
     # --- Print ---------------------------------------------------------------------------------
     $labels = @($plan | ForEach-Object { $_.Label })
     $widths = @($plan | ForEach-Object { [math]::Max(7, $_.Label.Length) })
+    $firstLabel = 'Mean turn of first worm'
+    $noneLabel = 'Games with no worm'
+    if ($IgnoreFirstWormTurn) {
+        # The first worm turn is ignored, so the first one that counts is the game's 2nd turn with any worm
+        $firstLabel = 'Mean turn of 2nd worm turn'
+        $noneLabel = 'Games with no 2nd worm turn'
+    }
 
     Write-Host ''
     Write-Host "Average worms drawn per turn ($Games simulated games per scenario)" -ForegroundColor Cyan
@@ -275,11 +296,15 @@ function Invoke-DuneCompare {
     Write-DuneCompareRow -RowLabel 'Worms drawn' -Cells $cellsWorms -Widths $widths
     Write-DuneCompareRow -RowLabel 'Turns with at least one worm' -Cells $cellsTurns -Widths $widths
     Write-DuneCompareRow -RowLabel 'Turns with more than 1 worm' -Cells $cellsMulti -Widths $widths
-    Write-DuneCompareRow -RowLabel 'Mean turn of first worm' -Cells $cellsFirst -Widths $widths
-    Write-DuneCompareRow -RowLabel 'Games with no worm' -Cells $cellsNone -Widths $widths
+    Write-DuneCompareRow -RowLabel $firstLabel -Cells $cellsFirst -Widths $widths
+    Write-DuneCompareRow -RowLabel $noneLabel -Cells $cellsNone -Widths $widths
     Write-Host ''
     Write-Host 'S = single deck, D = double spice; labels read worms/territories at the start of the game.'
     Write-Host 'Mean turn of first worm only counts games that had a worm.'
+    if ($IgnoreFirstWormTurn) {
+        Write-Host 'First worm turn of each game ignored (no Nexus, however many worms it had): those worms still count in the'
+        Write-Host 'worms/turns rows, but the first-worm rows start from the next turn that has a worm.'
+    }
     Write-Host ''
 
     # --- Spreadsheet ----------------------------------------------------------------------------
@@ -299,6 +324,7 @@ function Invoke-DuneCompare {
         Add-DuneCsvRow -RowLabel 'Worms at game start' -Values @($plan | ForEach-Object { $_.Worms })
         Add-DuneCsvRow -RowLabel 'Territories at game start' -Values @($plan | ForEach-Object { $_.Territories })
         Add-DuneCsvRow -RowLabel 'Games simulated' -Values @($plan | ForEach-Object { $Games })
+        Add-DuneCsvRow -RowLabel 'First worm turn ignored (1 = yes)' -Values @($plan | ForEach-Object { if ($IgnoreFirstWormTurn) { 1 } else { 0 } })
         for ($turn = 1; $turn -le $LastTurn; $turn++) {
             $vals = @($results | ForEach-Object { if ($turn -eq 1) { 0 } else { [math]::Round($_.AvgWormsByTurn[$turn], 4) } })
             Add-DuneCsvRow -RowLabel "Avg worms, turn $turn" -Values $vals
@@ -306,8 +332,8 @@ function Invoke-DuneCompare {
         Add-DuneCsvRow -RowLabel "Worms drawn per game (turns 2-$LastTurn)" -Values @($results | ForEach-Object { [math]::Round($_.AvgTotalWorms, 4) })
         Add-DuneCsvRow -RowLabel 'Turns with at least one worm per game' -Values @($results | ForEach-Object { [math]::Round($_.AvgTurnsWithWorm, 4) })
         Add-DuneCsvRow -RowLabel 'Turns with more than 1 worm per game' -Values @($results | ForEach-Object { [math]::Round($_.AvgTurnsWithMultiWorm, 4) })
-        Add-DuneCsvRow -RowLabel 'Mean turn of first worm' -Values @($results | ForEach-Object { if ($null -eq $_.MeanFirstWormTurn) { '' } else { [math]::Round($_.MeanFirstWormTurn, 4) } })
-        Add-DuneCsvRow -RowLabel 'Games with no worm (%)' -Values @($results | ForEach-Object { [math]::Round(100 * $_.PNoWorm, 3) })
+        Add-DuneCsvRow -RowLabel $firstLabel -Values @($results | ForEach-Object { if ($null -eq $_.MeanFirstWormTurn) { '' } else { [math]::Round($_.MeanFirstWormTurn, 4) } })
+        Add-DuneCsvRow -RowLabel "$noneLabel (%)" -Values @($results | ForEach-Object { [math]::Round(100 * $_.PNoWorm, 3) })
 
         try {
             $csvRows | Export-Csv -Path $CsvPath -NoTypeInformation -Encoding UTF8
@@ -324,10 +350,15 @@ function Invoke-DuneSpice {
     [CmdletBinding()]
     param(
         [Alias('d')][switch]$DoubleSpice,
+        [Alias('i')][switch]$IgnoreFirstWormTurn,
         [Alias('w')][ValidateRange(1, 1000)][int]$Worms,
         [Alias('t')][ValidateRange(1, 1000)][int]$Territories,
         [Alias('n')][ValidateRange(100, 10000000)][int]$Games = 10000
     )
+
+    if ($IgnoreFirstWormTurn -and -not $DoubleSpice) {
+        Write-Warning '-i only affects double-spice (-d) and -Compare output; the standard table is unchanged.'
+    }
 
     # Defaults depend on the mode; anything passed in wins
     $totalWorms = if ($PSBoundParameters.ContainsKey('Worms')) { $Worms } elseif ($DoubleSpice) { 5 } else { 6 }
@@ -385,7 +416,7 @@ function Invoke-DuneSpice {
         # Calculating the odds exactly is way too complicated (we would have to average over every starting deck
         # configuration AND every reshuffle). So we simulate whole games card by card and count what happens.
         $lastTurn = 10
-        $sim = Invoke-DuneSimulation -Territories $territoryCards -Worms $totalWorms -DeckCount 2 -Games $Games -LastTurn $lastTurn -ProgressLabel 'Double spice'
+        $sim = Invoke-DuneSimulation -Territories $territoryCards -Worms $totalWorms -DeckCount 2 -Games $Games -LastTurn $lastTurn -IgnoreFirstWormTurn ([bool]$IgnoreFirstWormTurn) -ProgressLabel 'Double spice'
 
         $cumulativeFirstWorm = 0
         for ($turn = 2; $turn -le $lastTurn; $turn++) {
@@ -395,6 +426,9 @@ function Invoke-DuneSpice {
         }
         Write-Host ''
         Write-Host "Estimated from $Games simulated games."
+        if ($IgnoreFirstWormTurn) {
+            Write-Host '"By now" ignores the first worm turn of each game (no Nexus that turn); the other columns count every worm.'
+        }
     }
     else {
         $deckA--   # Turn 1 drew a territory
@@ -454,6 +488,8 @@ function dune {
         [int]$Territories,
         [Alias('d')]
         [switch]$DoubleSpice,
+        [Alias('i')]
+        [switch]$IgnoreFirstWormTurn,
         [Alias('c')]
         [string[]]$Compare,
         [Alias('n')]
@@ -465,7 +501,7 @@ function dune {
 
     if ($Command -eq 'spice') {
         if ($PSBoundParameters.ContainsKey('Compare')) {
-            Invoke-DuneCompare -Scenarios $Compare -Games $Games -CsvPath $Csv
+            Invoke-DuneCompare -Scenarios $Compare -Games $Games -CsvPath $Csv -IgnoreFirstWormTurn ([bool]$IgnoreFirstWormTurn)
             return
         }
         if ($PSBoundParameters.ContainsKey('Csv')) {
@@ -473,7 +509,7 @@ function dune {
         }
 
         # Only pass worms/territories along if they were given, so each mode keeps its own defaults
-        $spiceArgs = @{ DoubleSpice = [bool]$DoubleSpice; Games = $Games }
+        $spiceArgs = @{ DoubleSpice = [bool]$DoubleSpice; IgnoreFirstWormTurn = [bool]$IgnoreFirstWormTurn; Games = $Games }
         if ($PSBoundParameters.ContainsKey('Worms')) { $spiceArgs.Worms = $Worms }
         if ($PSBoundParameters.ContainsKey('Territories')) { $spiceArgs.Territories = $Territories }
         Invoke-DuneSpice @spiceArgs
